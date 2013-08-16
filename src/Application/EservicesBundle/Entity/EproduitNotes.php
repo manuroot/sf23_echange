@@ -26,14 +26,24 @@ class EproduitNotes {
      */
     private $id;
 
+             
+             
     /**
      * @var integer
-     /**
-     * @var integer
-     * @Assert\Min(limit = "1", message = "Note minimum: 1")
-     * @Assert\Max(limit = "10", message = "Note maximum: 10")
-     * @ORM\Column(name="note", type="integer", length=3, nullable=false)
-     */
+     * 
+    * @ORM\Column(name="note", type="integer", length=3, nullable=false)
+     * 
+    * @Assert\Length(
+     *      min = "1",
+     *      max = "10",
+     *      minMessage = "At minimum {{ limit }} |
+     *  Au minimum {{ limit }}",
+     *      maxMessage = "At maximum {{ limit }} |
+     *  Au maximum {{ limit }}"
+     * )
+    * 
+    */
+    
     private $note;
 
     

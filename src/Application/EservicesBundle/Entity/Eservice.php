@@ -17,6 +17,8 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Application\Sonata\UserBundle\entity\User as User;
 
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\MinLength;
 
 use Symfony\Component\Validator\Constraints as Assert;
 /*use Symfony\Component\Validator\Constraints\NotBlank;
@@ -98,11 +100,18 @@ class Eservice {
      */
     private $description;
 
-    /**
-     * @var integer
-     * @Assert\Min(limit = "10", message = "Valeur minimum: 10 Brouzoufs")
-     * @Assert\Max(limit = "200", message = "Valeur maximum: 200 Brouzoufs")
+    /** @var integer
      * @ORM\Column(name="brouzoufs", type="integer", nullable=false)
+     * 
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "200",
+     *      minMessage = "At minimum {{ limit }} Brouzoufs |
+     *  Au minimum {{ limit }} Brouzoufs",
+     *      maxMessage = "At maximum {{ limit }} Brouzoufs |
+     *  Au maximum {{ limit }} Brouzoufs"
+     * )
+   
      */
     private $brouzoufs;
 
