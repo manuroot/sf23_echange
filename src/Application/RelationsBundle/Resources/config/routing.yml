@@ -2,14 +2,6 @@ application_relations_demandegroup:
     resource: "@ApplicationRelationsBundle/Resources/config/routing/demandeusergroup.yml"
     prefix:   /groupdemande
     
-_chronousers:
-    resource: "@ApplicationRelationsBundle/Resources/config/routing/chronouser.yml"
-    prefix:   /chronousers
-    
-_chronousergroup:
-    resource: "@ApplicationRelationsBundle/Resources/config/routing/chronousergroup.yml"
-    prefix:   /chronogroups
-    
 
 _egroup:
     resource: "@ApplicationRelationsBundle/Resources/config/routing/eservicegroup.yml"
