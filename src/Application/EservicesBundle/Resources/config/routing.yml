@@ -1,0 +1,19 @@
+_eservice:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/eservice.yml"
+    prefix:   /
+    
+_eproduit:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/eproduit.yml"
+    prefix:   /eproduit
+ 
+_eproduit_comments:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/eproduitcomments.yml"
+    prefix:   /comments
+    
+_eproduit_history:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/eproduithistory.yml"
+    prefix:   /history
+
+_eproduit_notes:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/eproduitnotes.yml"
+    prefix:   /enotes   
