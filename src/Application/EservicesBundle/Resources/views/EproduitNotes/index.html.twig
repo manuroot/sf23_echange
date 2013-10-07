@@ -9,6 +9,17 @@
 
 {% block javascripts %}
 {{ parent() }}
+
+<script type="text/javascript" src="{{ asset('jquery/jquery.raty.js') }}"></script>
+ <script type="text/javascript">
+    $('.star').raty({
+       /* path: '/images',*/
+        readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+  }
+});
+</script>
  {% endblock %}
 
 
@@ -35,8 +46,9 @@ MES NOTES-PRODUITS
 <div class="mypost">
     
     <div class="row"> 
- <div class="col-lg-3"> 
-   <a href="{{ path('enotes_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+ <div class="col-lg-3">
+   <a href="{{ path('enotes_show', { 'id': entity.id }) }}">
+ <span class="badge">{{ entity.id }}</span></a>
     {{ entity.produit.name }}
    </div>
             <div class="col-lg-3"> 
@@ -49,7 +61,7 @@ MES NOTES-PRODUITS
     {% endif %}
     </div>
   
-     <div class="col-lg-4"> 
+     <div class="col-lg-3 col-lg-offset-3"> 
     {% if entity.produit.image is not null %}               
      <img width="40px" src="{{ vich_uploader_asset(entity.produit, 'image') }}" alt="{{ entity.produit.imageName }}" />
     {% else %}
@@ -58,10 +70,7 @@ MES NOTES-PRODUITS
         </div>  
             </div>
   <div class="row"> 
- <div class="col-lg-3"> 
- 
-    {{ entity.note }}
-     </div>
+
           <div class="col-lg-3"> 
                <span class="glyphicon glyphicon-time"></span>  <span class="label label-info">
      {% if entity.updated is defined %}
@@ -73,7 +82,7 @@ MES NOTES-PRODUITS
      {% endif %}
                         </span>
                         </div>
-                          <div class="col-lg-3"> 
+ <div class="col-lg-3"> 
        <a href="{{ path('enotes_show', { 'id': entity.id }) }}">
            <img src="{{ asset('bundles/applicationeservices/images/detail.png') }}" alt="show" width="15" height="15" />
                 </a>
@@ -81,9 +90,25 @@ MES NOTES-PRODUITS
          <a href="{{ path('enotes_edit', { 'id': entity.id }) }}">
            <img src="{{ asset('bundles/applicationeservices/images/edit.png') }}" alt="edit" width="15" height="15" />
            </a>
-         </div>               
+         </div>  
+       <div class="col-lg-3 col-lg-offset-3"> 
+ 
+     
+         {% if entity.note is defined %}
+           <div class="star" data-score="{{ entity.note }}"></div>
+         
+        {% else %}
+   <div class="star" data-score="0"></div>
+        {#({{ entity.globalnote }})#}
+        {% endif %}
+          
+            
+   
+     </div>
               </div>
     </div>
+    
+    
         {% endfor %}
               
 

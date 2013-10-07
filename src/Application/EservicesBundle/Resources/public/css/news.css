@@ -1,12 +1,12 @@
 div.mypost
 {
 border:1px solid;
-border-radius:20px;
--moz-border-radius:20px; /* Old Firefox */
+border-radius:5px;
+-moz-border-radius:5px; /* Old Firefox */
 padding-bottom:10px;
 padding-left:10px;
 margin-bottom:20px;
-box-shadow: 7px 7px 5px #888888;
+box-shadow: 2px 2px 2px #888888;
 background-color:  #e3e3e3;
 } 
 

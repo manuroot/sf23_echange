@@ -165,23 +165,12 @@ class EproduitController extends Controller {
              list($user_id,$group_id) = $this->getuserid();
            $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'eproduit_indexadmin');
-
-         
-        
-        
-        $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFind();
-        $queryBuilder = $query->getQuery();
-        $paginator = $this->get('knp_paginator');
-        $pagename1 = 'page1'; // Set custom page variable name
-        $page1 = $this->get('request')->query->get($pagename1, 1); // Get custom page variable
-       $paginationa = $paginator->paginate(
-                $query, $page1, 3, array('pageParameterName' => $pagename1,
-            "sortDirectionParameterName" => "dir1",
-            'sortFieldParameterName' => "sort1")
-        );
-        $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+      $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFind();
+        $pagination=$this->createpaginator($query, 5);
+        $pagination->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+      
         return $this->render('ApplicationEservicesBundle:Eproduit:template_index.html.twig', array(
-                    'paginationa' => $paginationa,
+                    'pagination' => $pagination,
              'iseditable' => 'no'
                 ));
     }
@@ -196,10 +185,7 @@ class EproduitController extends Controller {
          $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'eproduit_mesproduits');
         $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindAll($user_id);
-
-        $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
         $pagination=$this->createpaginator($query, 2);
-        $pagination->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
         return $this->render('ApplicationEservicesBundle:Eproduit:template_index.html.twig', array(
                     'pagination' => $pagination,
                     'iseditable' => 'yes'

@@ -23,7 +23,32 @@ sonata_media:
                 big:   { width: 500 , quality: 70}
                 mini: { width: 50 , quality: 70}
 
-       
+      
+        news:
+            download:
+                strategy: sonata.media.security.superadmin_strategy
+                mode: http
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 150 , quality: 95}
+                big:   { width: 500 , quality: 90}
+                mini: { width: 50 , quality: 70}
+        avatar:
+            download:
+                strategy: sonata.media.security.superadmin_strategy
+                mode: http
+            providers:
+                - sonata.media.provider.image
+        
+            formats:
+                small: { width: 150 , quality: 95}
+                big:   { width: 500 , quality: 90}
+                mini: { width: 50 , quality: 70}
     cdn:
         server:
             path:      /uploads/media # http://media.sonata-project.org

@@ -29,7 +29,8 @@ PRODUIT: {{ entity.name }}
 {% block content %}
      <br>  
 {#{ path }#}
-             
+  <div class="row">
+<div class="col-md-11">           
      <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
 <a href="{{ path('eproduit_edit', { 'id': entity.id }) }}" class="btn btn-small btn-warning">Editer</a>
 <br><br>
@@ -97,8 +98,11 @@ PRODUIT: {{ entity.name }}
             
         </tbody>
     </table>
+</div></div>
 
-
+     
+       <div class="row">
+<div class="col-md-11">  
  <h2><center>Commentaires</center></h2>
  
 {% if entity.comments|length > 0 %}
@@ -155,4 +159,5 @@ PRODUIT: {{ entity.name }}
         {% render 'ApplicationEserviceBundle:EproduitComments:new' with { 'produit_id': entity.id } %}
 #}
     </section>
+   </div></div>
 {% endblock %}
