@@ -30,6 +30,8 @@ DASHBOARD - GROUPES
 {% endblock %}
 {% block content %}
 
+<div class="row">
+<div class="col-md-11">
 {% if is_granted("ROLE_USER") %}   
 <a href="{{ path('egroup_groupes_new') }}" class="btn btn-medium btn-primary">Ajouter un groupe</a>
 {% endif %}
@@ -91,7 +93,10 @@ DASHBOARD - GROUPES
         {% endfor %}
         </tbody>
     </table>
-
+</div>
+        </div>
+        <div class="row">
+<div class="col-md-11">
 {% if is_granted("ROLE_ADMIN") %}   
 administrateur uniquement: <br>
   <a href="{{ path('groupedemande_new') }}" class="btn btn-medium btn-primary">Ajouter Demande de groupe</a>
@@ -163,6 +168,8 @@ administrateur uniquement: <br>
         {% endfor %}
         </tbody>
     </table>
+    </div>
+                </div>
 {#
     {{ render (controller("ApplicationRelationsBundle:DemandeUsergroup:indexMonGroupe")) }}   
 #}

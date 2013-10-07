@@ -327,5 +327,23 @@ mopa_bootstrap:
 #bc_bootstrap:
 #    assets_dir: %kernel.root_dir%/../vendor/twitter/bootstrap
 #    jquery_path: %kernel.root_dir%/../vendor/jquery/jquery/jquery-1.9.1.js
+ivory_ck_editor:
+    configs:
+        my_config:
+              height: "400px"
+              colorButton_colors: '00923E,F8C100,28166F'
+              toolbar: "full"
+              filebrowserBrowseRoute: admin_sonata_media_media_browser
+              filebrowserImageBrowseRoute: admin_sonata_media_media_browser
+              # Display images by default when clicking the image dialog browse button
+              filebrowserImageBrowseRouteParameters:
+                provider: sonata.media.provider.image
+              filebrowserUploadRoute: admin_sonata_media_media_upload
+              filebrowserUploadRouteParameters:
+                provider: sonata.media.provider.file
+              # Upload file as image when sending a file from the image dialog
+              filebrowserImageUploadRoute: admin_sonata_media_media_upload
+              filebrowserImageUploadRouteParameters:
+                provider: sonata.media.provider.image
 
-
+           

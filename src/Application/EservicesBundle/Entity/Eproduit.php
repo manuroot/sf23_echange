@@ -70,6 +70,13 @@ class Eproduit {
      */
     private $description;
 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="shortdescription", type="text",length=200, nullable=false)
+     */
+    private $shortdescription;
     /**
      * @ORM\ManyToMany(targetEntity="Eservice", mappedBy="produits",cascade={"persist"})
      */
@@ -199,7 +206,17 @@ private $notes;
 
         return $this;
     }
+ /**
+    * Set description
+     *
+     * @param string $description
+     * @return Eservice
+     */
+    public function setShortdescription($shortdescription) {
+        $this->shortdescription = $shortdescription;
 
+        return $this;
+    }
     /**
      * Get description
      *
@@ -208,7 +225,14 @@ private $notes;
     public function getDescription() {
         return $this->description;
     }
-
+/**
+     * Get shortdescription
+     *
+     * @return string 
+     */
+    public function getShortdescription() {
+        return $this->shortdescription;
+    }
     /**
      * Set services
      *

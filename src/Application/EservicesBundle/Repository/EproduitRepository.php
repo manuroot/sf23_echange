@@ -51,6 +51,7 @@ class EproduitRepository extends EntityRepository {
         $this->query = $this->myFindJoin()
                 ->add('orderBy', 'a.id DESC');
         return $this->query;
+        //->getQuery();
     }
 
     public function myFindAll($user_id) {
@@ -59,8 +60,8 @@ class EproduitRepository extends EntityRepository {
         $query = $this->query
                 ->where('a.proprietaire = :proprietaire')
                 ->add('orderBy', 'a.id DESC')
-                ->setParameter('proprietaire', $user_id)
-                ->getQuery();
+                ->setParameter('proprietaire', $user_id);
+               // ->getQuery();
         return $query;
     }
 
@@ -86,8 +87,8 @@ class EproduitRepository extends EntityRepository {
                 ->leftJoin('a.proprietaire', 'g')
                 ->andWhere('g.idgroup = :groupid')
                 ->setParameter('groupid', $group_id)
-                ->add('orderBy', 'a.id DESC')
-                ->getQuery();
+                ->add('orderBy', 'a.id DESC');
+                //->getQuery();
         return $query;
     }
 

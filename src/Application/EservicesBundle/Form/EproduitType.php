@@ -13,20 +13,30 @@ class EproduitType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('name')
-        /*, 'genemu_jqueryautocomplete_entity', array(
-                    'class' => 'Application\EservicesBundle\Entity\Eproduit',
-                    'property' => 'name',
-                    'configs' => array(
-                        'minLength' => 0,
-                    ),
-                ))*/
+                /* , 'genemu_jqueryautocomplete_entity', array(
+                  'class' => 'Application\EservicesBundle\Entity\Eproduit',
+                  'property' => 'name',
+                  'configs' => array(
+                  'minLength' => 0,
+                  ),
+                  )) */
                 //  ->add('name',null,array('label'=>'Nom du Produit'))
-                ->add('description', 'textarea', array(
-                    'label' => 'Description du Produit',
+                ->add('description', 'ckeditor', array(
+                    'config_name' => 'my_config',
+                ))
+                ->add('shortdescription', 'textarea', array(
+                    'label' => 'Résumé',
                     'attr' => array(
-                        'cols' => "60",
-                        'class' => 'tinymce',
-                        )))
+                  'cols' => "60",'rows'=>"5"),
+                ))
+
+
+                /* ->add('description', 'textarea', array(
+                  'label' => 'Description du Produit',
+                  'attr' => array(
+                  'cols' => "60",
+                  'class' => 'tinymce',
+                  ))) */
 
                 // ->add('services')
                 //->add('image')
@@ -34,15 +44,15 @@ class EproduitType extends AbstractType {
                     'data_class' => 'Symfony\Component\HttpFoundation\File\File',
                     'property_path' => 'image',
                     'required' => false,
-                ));
-        
-        /*$builder->add('soccer_player', 'genemu_jqueryautocomplete_text', array(
-            'suggestions' => array(
-                'Ozil',
-                'Van Persie'
-            ),
-            'mapped'=>false,
-            ));*/
+        ));
+
+        /* $builder->add('soccer_player', 'genemu_jqueryautocomplete_text', array(
+          'suggestions' => array(
+          'Ozil',
+          'Van Persie'
+          ),
+          'mapped'=>false,
+          )); */
         /* ->add('image', 'sonata_media_type', array(
           'provider' => 'sonata.media.provider.image',
           'context'  => 'default'

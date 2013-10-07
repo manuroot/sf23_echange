@@ -18,6 +18,32 @@ class EserviceController extends Controller {
      * Lists all Eservice entities.
      *
      */
+    
+     /* ====================================================================
+     *
+     * CREATION DU PAGINATOR
+     *
+      =================================================================== */
+
+    private function createpaginator($query, $num_perpage = 5, $session_page = null) {
+
+        $request = $this->getRequest();
+        // $session = $request->getSession();
+        $pagename = 'page'; // Set custom page variable name
+        $page = $request->query->get($pagename, 1);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $page, $num_perpage, array(
+            'pageParameterName' => $pagename,
+            'distinct' => true,
+            "sortDirectionParameterName" => "dir",
+            'sortFieldParameterName' => "sort")
+        );
+        // $total=$pagination->getTotalItemCount();
+        $pagination->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+        $pagination->setSortableTemplate('ApplicationEservicesBundle:pagination:sortable_link.html.twig');
+        return $pagination;
+    }
     public function indexAction() {
 
 
@@ -98,6 +124,7 @@ class EserviceController extends Controller {
 //$paginationa->setDefaultPaginatorOptions(array()
         $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
         $paginationb->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+         $pagination_mesdemandes->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
         //$pagination->setTemplate('ApplicationMyNotesBundle:pagination:sliding.html.twig');
         return $this->render('ApplicationEservicesBundle:Eservice:index.html.twig', array(
                     //'pagination' => $pagination,

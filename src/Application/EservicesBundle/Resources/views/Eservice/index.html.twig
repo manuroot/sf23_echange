@@ -2,8 +2,8 @@
 
   {% block stylesheets %}
 {{ parent() }}
-      <link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/sliding.css') }}" type="text/css" media="all"/>
-  
+    {#  <link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/sliding.css') }}" type="text/css" media="all"/>
+ #} 
  {% endblock %}
       
       
@@ -29,6 +29,7 @@ $('a[data-toggle="tab"]').on('shown', function (e) {
 DASHBOARD - SERVICES
 {% endblock %}
 {% block content %}
+{{ parent() }}
 <br>
 <div id="ptitbutton">
         <img width="50px" src="{{ asset('images/pieces.jpg') }}" alt="brouzoufs" />
@@ -45,43 +46,52 @@ DASHBOARD - SERVICES
     {% endfor %}
 {% endfor %}
 
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#pane1" data-toggle="tab">MES PROPOSITIONS</a></li>
+    <li><a href="#pane2" data-toggle="tab">PROPOSITIONS EN ATTENTE</a></li>
+    <li><a href="#pane3" data-toggle="tab">Tab 3</a></li>
+   </ul>
+  <div class="tab-content">
+    <div id="pane1" class="tab-pane active">
+     
+     <p>
+<a href="{{ path('eservice_other') }}" class="btn btn-medium btn-primary"><i class="icon-search"></i> Consulter les propositions</a>
+{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': paginationb,'etitable':'0'} %}
 
+   </p> </div>
+    <div id="pane2" class="tab-pane">
+    
+      {% if is_granted("ROLE_USER") %}   
+<a href="{{ path('eservice_new') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter un Service</a>
+{% endif %}
+
+{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': paginationa,'etitable':'1'} %}
+
+</div>
+          
+          
+    <div id="pane3" class="tab-pane">
+     
+    <p>  <a href="{{ path('eservice_demandes') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter une demande</a>
+<br><br>
+{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': pagination_demandes,'etitable':'1'} %}
+</p>
+    </div>
+   
+  </div><!-- /.tab-content -->
+</div><!-- /.tabbable -->
+
+{#
 <div class="tabbable"> <!-- Only required for left/right tabs -->
 <ul class="nav nav-tabs">
 <li class="active"><a href="#tab1" data-toggle="tab">MES PROPOSITIONS</a></li>
 <li><a href="#tab2" data-toggle="tab">PROPOSITIONS EN ATTENTE</a></li>
 <li><a href="#tab3" data-toggle="tab">MES DEMANDES</a></li>
 </ul>
-       
- <div class="tab-content">
-<div class="tab-pane active" id="tab1">
-
-{% if is_granted("ROLE_USER") %}   
-<a href="{{ path('eservice_new') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter un Service</a>
-{% endif %}
-<br><br>
+     #}  
 
 
-<br><br>
-{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': paginationa,'etitable':'1'} %}
-
-</div>
-<div class="tab-pane" id="tab2">
-
-<a href="{{ path('eservice_other') }}" class="btn btn-medium btn-primary"><i class="icon-search"></i> Consulter les propositions</a>
-{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': paginationb,'etitable':'0'} %}
-<br><br>
-</div>
-         
-         
-<div class="tab-pane" id="tab3">
-<a href="{{ path('eservice_demandes') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter une demande</a>
-<br><br>
-{% include 'ApplicationEservicesBundle:Eservice:template_services.html.twig' with {'mypagination': pagination_demandes,'etitable':'1'} %}
-</div>
-
-</div>
-</div>
 
 
 {% endblock %}

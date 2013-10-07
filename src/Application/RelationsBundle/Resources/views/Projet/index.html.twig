@@ -20,6 +20,7 @@
     {% endfor %}
 {% endfor %}
  
+<div class="col-md-11">
    {% if is_granted("ROLE_ADMIN") %}
 <a href="{{ path('projets_new') }}" class="btn btn-medium btn-primary">Ajouter Projet</a>
 {% endif %}
@@ -81,5 +82,5 @@
     </tbody>
 </table>
     {{ knp_pagination_render(pagination, 'ApplicationRelationsBundle:pagination:twitter_bootstrap_pagination.html.twig') }}
-
+</div>
 {% endblock %}

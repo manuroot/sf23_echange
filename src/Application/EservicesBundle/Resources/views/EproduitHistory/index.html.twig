@@ -20,7 +20,7 @@ HISTORIQUE DES PRETS
         </div>
     {% endfor %}
 {% endfor %}
-    
+   <div class="col-md-11"> 
 {% if is_granted("ROLE_ADMIN") %}   
 <a href="{{ path('ep_history_new') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter un Prêt</a>
 {% endif %}
@@ -81,5 +81,5 @@ HISTORIQUE DES PRETS
         </tbody>
     </table>
 
-
+</div>
     {% endblock %}

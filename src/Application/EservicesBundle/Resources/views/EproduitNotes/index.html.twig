@@ -2,8 +2,8 @@
 
   {% block stylesheets %}
 {{ parent() }}
-<link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/sliding.css') }}" type="text/css" media="all"/>
-
+<link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/news') }}" type="text/css" media="all"/>
+   
  {% endblock %}
 
 
@@ -25,75 +25,73 @@ MES NOTES-PRODUITS
     </div>
     {% endfor %}
 {% endfor %}
-
+ <div class="row">
+<div class="col-lg-8">
  {% if is_granted("ROLE_USER") %}   
     <a href="{{ path('enotes_new') }}" class="btn btn-medium btn-primary"><i class="icon-plus"></i> Ajouter une note</a>
 {% endif %}
     <br><br>
-
-
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-            <tr class="title">
-
-                <th>{{ knp_pagination_sortable(paginationa, 'Id', 'a.id') }}</th>
-                <th>Produit</th>
-                <th>Proprietaire</th>
-                <th>Image</th>
-                <th{% if paginationa.isSorted('a.note') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginationa, 'Notes', 'a.note') }}</th>
-                       <th{% if paginationa.isSorted('a.updated') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(paginationa, 'Date', 'a.updated') }}</th>
-                      <th colspan="2">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in paginationa %}
-                <tr>
-
-                    <td><a href="{{ path('enotes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.produit.name }}</td>
-                    <td>{{ entity.produit.proprietaire.username }}</td>
-                    <td>  
-                     {% if entity.produit.image is not null %}               
-
-      {#   {{ app.request.basePath }} {{ vich_uploader_asset(message, 'image') }}#}
-        {#   <img width="60px" src=" {{ app.request.basePath }} {{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
-#}
-                            <img width="40px" src="{{ vich_uploader_asset(entity.produit, 'image') }}" alt="{{ entity.produit.imageName }}" />
-         {% else %}
-                            ---
-         {% endif %}
-                        </td>
-
-
-                        <td>{{ entity.note }}</td>
-                 {% if entity.updated is defined %}
-                        <td>{{ entity.updated|date('Y-m-d') }}</td>
-                 {% else %}
-                        <td>---</td>
-                {% endif %}
-                        <td>
-                            <a href="{{ path('enotes_show', { 'id': entity.id }) }}">
-                                <img src="{{ asset('bundles/applicationeservices/images/detail.png') }}" alt="show" width="15" height="15" />
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ path('enotes_edit', { 'id': entity.id }) }}">
-                                <img src="{{ asset('bundles/applicationeservices/images/edit.png') }}" alt="edit" width="15" height="15" />
-                            </a>
-                        </td>
-                {#
-                   <td>
-     <a href="{{ path('enotes_delete', { 'id': entity.id }) }}">
-                        <img src="{{ asset('bundles/applicationeservices/images/delete.png') }}" alt="delete" width="15" height="15" />
-                    </a>
-                </td>
-                #}
-
-                    </tr>
+       {% for entity in paginationa %}
+<div class="mypost">
+    
+    <div class="row"> 
+ <div class="col-lg-3"> 
+   <a href="{{ path('enotes_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+    {{ entity.produit.name }}
+   </div>
+            <div class="col-lg-3"> 
+    {% if entity.produit.proprietaire is not null %}   
+           <span class="glyphicon glyphicon-user"></span> <span class="label label-primary">
+{{ entity.produit.proprietaire.username }}</span>
+     
+    {% else %}
+        ---
+    {% endif %}
+    </div>
+  
+     <div class="col-lg-4"> 
+    {% if entity.produit.image is not null %}               
+     <img width="40px" src="{{ vich_uploader_asset(entity.produit, 'image') }}" alt="{{ entity.produit.imageName }}" />
+    {% else %}
+        ---
+    {% endif %}
+        </div>  
+            </div>
+  <div class="row"> 
+ <div class="col-lg-3"> 
+ 
+    {{ entity.note }}
+     </div>
+          <div class="col-lg-3"> 
+               <span class="glyphicon glyphicon-time"></span>  <span class="label label-info">
+     {% if entity.updated is defined %}
+                  
+ {{ entity.updated|date('Y-m-d') }}
+    
+     {% else %}
+                        ---
+     {% endif %}
+                        </span>
+                        </div>
+                          <div class="col-lg-3"> 
+       <a href="{{ path('enotes_show', { 'id': entity.id }) }}">
+           <img src="{{ asset('bundles/applicationeservices/images/detail.png') }}" alt="show" width="15" height="15" />
+                </a>
+                       
+         <a href="{{ path('enotes_edit', { 'id': entity.id }) }}">
+           <img src="{{ asset('bundles/applicationeservices/images/edit.png') }}" alt="edit" width="15" height="15" />
+           </a>
+         </div>               
+              </div>
+    </div>
         {% endfor %}
-                </tbody>
-            </table>
+              
 
   {{ knp_pagination_render(paginationa) }}
-
+</div>
+     
+   <div class="col-lg-1"> 2</div>
+   
+</div>
+  
     {% endblock %}

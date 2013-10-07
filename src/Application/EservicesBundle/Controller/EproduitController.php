@@ -14,6 +14,10 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Exception\NotValidCurrentPageException;
+
 
 /**
  * Eproduit controller.
@@ -21,7 +25,42 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class EproduitController extends Controller {
 
-  
+       /* ====================================================================
+     *
+     * CREATION DU PAGINATOR
+     *
+      =================================================================== */
+
+    private function createpaginator($query, $num_perpage = 5, $session_page = null) {
+
+        $request = $this->getRequest();
+        // $session = $request->getSession();
+        $pagename = 'page'; // Set custom page variable name
+       
+        $page = $request->query->get($pagename, 1);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $query, $page, $num_perpage, array(
+            'pageParameterName' => $pagename,
+            'distinct' => true,
+            "sortDirectionParameterName" => "dir",
+            'sortFieldParameterName' => "sort")
+        );
+        // $total=$pagination->getTotalItemCount();
+        $pagination->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+        $pagination->setSortableTemplate('ApplicationEservicesBundle:pagination:sortable_link.html.twig');
+        return $pagination;
+    }
+   private function mypager($adapter = null, $max = 5, $page = 1) {
+        if (isset($adapter)) {
+            $pagerfanta = new Pagerfanta($adapter);
+            $pagerfanta->setMaxPerPage($max);
+
+            return $pagerfanta;
+        } else {
+            return null;
+        }
+    }
     private function getuserid() {
        $em = $this->getDoctrine()->getManager();
         $user_security = $this->container->get('security.context');
@@ -58,11 +97,34 @@ class EproduitController extends Controller {
         list($user_id,$group_id) = $this->getuserid();
          $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'eproduit');
-
         
-          $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindAll($user_id);
-        $query_other = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
-        $paginator = $this->get('knp_paginator');
+          $querya = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindAll($user_id);
+          $queryBuildera = $querya->getQuery();
+             $pagenamea = 'page1'; // Set custom page variable name
+   
+        $pagea = $this->get('request')->query->get($pagenamea, 1);
+        $paginatora = $this->get('knp_paginator');
+        $paginationa = $paginatora->paginate(
+                $querya, $pagea, 2, array(
+            'pageParameterName' => $pagenamea,
+            'distinct' => true,
+            "sortDirectionParameterName" => "dir1",
+            'sortFieldParameterName' => "sort1")
+        );
+        // $total=$pagination->getTotalItemCount();
+        $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+          
+          
+          
+          
+          
+         /*
+        $queryb = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
+        $queryBuilderb = $queryb->getQuery();
+        $paginationb = $this->createpaginator($queryBuilderb, 5);
+*/
+        
+      /*  $paginator = $this->get('knp_paginator');
         //   $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->findAll();
         $pagename1 = 'page1'; // Set custom page variable name
         $page1 = $this->get('request')->query->get($pagename1, 1); // Get custom page variable
@@ -71,7 +133,10 @@ class EproduitController extends Controller {
             "sortDirectionParameterName" => "dir1",
             'sortFieldParameterName' => "sort1")
         );
-
+*/
+         $query_other = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
+      
+        $paginator = $this->get('knp_paginator');
         $pagename2 = 'page2'; // Set another custom page variable name
         $page2 = $this->get('request')->query->get($pagename2, 1); // Get another custom page variable
         $paginationb = $paginator->paginate(
@@ -79,10 +144,12 @@ class EproduitController extends Controller {
             "sortDirectionParameterName" => "dir2",
             'sortFieldParameterName' => "sort2")
         );
+          $paginationb->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+       
         //$query = $em->getRepository('ApplicationEservicesBundle:CertificatsCenter')->myFindaAll();
 
-        $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
-        $paginationb->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+      //  $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+      //  $paginationb->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
         //  $pagination->setTemplate('ApplicationEservicesBundle:pagination:sliding.html.twig');
         return $this->render('ApplicationEservicesBundle:Eproduit:index.html.twig', array(
                     'paginationa' => $paginationa,
@@ -99,19 +166,23 @@ class EproduitController extends Controller {
            $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'eproduit_indexadmin');
 
+         
+        
+        
         $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFind();
-
+        $queryBuilder = $query->getQuery();
         $paginator = $this->get('knp_paginator');
         $pagename1 = 'page1'; // Set custom page variable name
         $page1 = $this->get('request')->query->get($pagename1, 1); // Get custom page variable
-        $paginationa = $paginator->paginate(
-                $query, $page1, 5, array('pageParameterName' => $pagename1)
+       $paginationa = $paginator->paginate(
+                $query, $page1, 3, array('pageParameterName' => $pagename1,
+            "sortDirectionParameterName" => "dir1",
+            'sortFieldParameterName' => "sort1")
         );
-
-
         $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
-        return $this->render('ApplicationEservicesBundle:Eproduit:indexadmin.html.twig', array(
+        return $this->render('ApplicationEservicesBundle:Eproduit:template_index.html.twig', array(
                     'paginationa' => $paginationa,
+             'iseditable' => 'no'
                 ));
     }
 
@@ -126,17 +197,12 @@ class EproduitController extends Controller {
         $session->set('buttonretour', 'eproduit_mesproduits');
         $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindAll($user_id);
 
-        $paginator = $this->get('knp_paginator');
-        $pagename1 = 'page1'; // Set custom page variable name
-        $page1 = $this->get('request')->query->get($pagename1, 1); // Get custom page variable
-        $paginationa = $paginator->paginate(
-                $query, $page1, 5, array('pageParameterName' => $pagename1)
-        );
-
-
-        $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
-        return $this->render('ApplicationEservicesBundle:Eproduit:indexmesproduits.html.twig', array(
-                    'paginationa' => $paginationa,
+        $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
+        $pagination=$this->createpaginator($query, 2);
+        $pagination->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
+        return $this->render('ApplicationEservicesBundle:Eproduit:template_index.html.twig', array(
+                    'pagination' => $pagination,
+                    'iseditable' => 'yes'
                 ));
     }
 
@@ -147,18 +213,10 @@ class EproduitController extends Controller {
            $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'eproduit_propositions');
         $query = $em->getRepository('ApplicationEservicesBundle:Eproduit')->myFindOtherAll($user_id,$group_id);
-
-        $paginator = $this->get('knp_paginator');
-        $pagename1 = 'page1'; // Set custom page variable name
-        $page1 = $this->get('request')->query->get($pagename1, 1); // Get custom page variable
-        $paginationa = $paginator->paginate(
-                $query, $page1, 5, array('pageParameterName' => $pagename1)
-        );
-
-
-        $paginationa->setTemplate('ApplicationEservicesBundle:pagination:twitter_bootstrap_pagination.html.twig');
-        return $this->render('ApplicationEservicesBundle:Eproduit:indexpropositions.html.twig', array(
-                    'paginationa' => $paginationa,
+        $pagination=$this->createpaginator($query, 2);
+        return $this->render('ApplicationEservicesBundle:Eproduit:template_index.html.twig', array(
+                    'pagination' => $pagination,
+             'iseditable' => 'no'
                 ));
     }
 
