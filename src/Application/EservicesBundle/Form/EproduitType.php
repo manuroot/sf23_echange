@@ -12,6 +12,11 @@ class EproduitType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+          ->add('geolocation', 'genemu_jquerygeolocation',array('mapped'=>false))
+               /* $builder->add('address', new EproduitGmapType(),array(
+                    
+                'mapped'=>false)
+                        )*/
                 ->add('name')
                 /* , 'genemu_jqueryautocomplete_entity', array(
                   'class' => 'Application\EservicesBundle\Entity\Eproduit',

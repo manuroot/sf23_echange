@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="form.type.gmap_address.class">Application\EservicesBundle\Form\EproduitGmapType</parameter>
+    </parameters>
+<services>
+    <!--
+<service id="application.form.new.eservice" class="Application\CertificatsBundle\Form\EserviceContratStepsType">
+    <tag name="form.type" alias="eservice" />
+</service>
+
+
+ <service id="application.form.flow.new.eservice" class="Application\CertificatsBundle\Form\EserviceFlow"
+            parent="craue.form.flow"
+            scope="request">
+        <call method="setFormType">
+            <argument type="service" id="application.form.new.eservice" />
+        </call>
+    </service>
+-->
+ 
+   
+        <service id="form.type.gmap_address" class="%form.type.gmap_address.class%">
+            <tag name="form.type" alias="gmap_address" />
+        </service>
+   
+ </services>
+</container>

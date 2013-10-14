@@ -2,12 +2,34 @@
 
   {% block stylesheets %}
 {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/news') }}" type="text/css" media="all"/> 
+<link rel="stylesheet" href="{{ asset('bundles/applicationeservices/css/news') }}" type="text/css" media="all"/>
+      
+   <style type="text/css">
+       .black {color: black;}
+.red {color: red;}
+.yellow {color: yellow;}
+.mywell {
+    border-color: rgb(220, 220, 220);
+    padding:5px;
+   margin:5px;
+   background-color: #9b9c9c;
+    background-image: linear-gradient(to bottom, #cadefb 0%, #9b9c9c 100%);
+    background-repeat: repeat-x;
+   /* border-color: rgb(220, 220, 220);*/
+   /* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 1px 0px rgba(255, 255, 255, 0.1);
+    position:relative;*/
+}
+</style>
+
  {% endblock %}
+
+     
+
+
 
 {% block content_header '' %}
 {% block title %}
-MES PRODUITS 
+PRODUITS DE MON GROUPE
 {% endblock %}
 {% block content %}
 
@@ -21,26 +43,24 @@ MES PRODUITS
 {% endfor %}
 
 
-
  <div class="row">
-
- <div class="col-lg-9"> 
-    {% for entity in paginationa %}
+    <div class="col-lg-8"> 
+    {% for entity in pagination %}
     <div class="mypost">
 {#-----------------------------------------------
          ROW 1
  
 -----------------------------------------------#}
-    <div class="row">
+    <div class="row mywell">
     <div class="col-lg-2"> 
       {% if entity.idStatus is not null %}
        {% if entity.idStatus.nom == 'open' %}
-              <img src="{{ asset('bundles/applicationeservices/images/cadenas-souvert.png') }}" alt="show" width="15" height="15" />
+              <img src="{{ asset('bundles/applicationeservices/images/cadenas-souvert.png') }}" alt="show" width="20px" height="20px" />
         {% else %}
-           <img src="{{ asset('bundles/applicationeservices/images/cadenas-sferme.png') }}" alt="show" width="15" height="15" />
+           <img src="{{ asset('bundles/applicationeservices/images/cadenas-sferme.png') }}" alt="show" width="20px" height="20px" />
         {% endif %} 
          {% else %}
-        <img src="{{ asset('bundles/applicationeservices/images/cadenas-sferme.png') }}" alt="show" width="15" height="15" />
+        <img src="{{ asset('bundles/applicationeservices/images/cadenas-sferme.png') }}" alt="show" width="20px" height="20px" />
      {% endif %} 
    
         <a href="{{ path('eproduit_show', { 'id': entity.id }) }}">({{ entity.id }})</a>
@@ -50,24 +70,25 @@ MES PRODUITS
      {{ entity.name }}
      </div>
              
-    <div class="col-lg-3"> 
+    <div class="col-lg-4"> 
        {% if entity.categorie is not null %}              
-            <span class="glyphicon glyphicon-wrench"></span> 
-           <span class="label label-info">{{ entity.categorie.name }}</span>
+          
+           <span class="label label-info">
+  <span class="glyphicon glyphicon-wrench"></span> {{ entity.categorie.name }}</span>
        {% else %}
         ---
        {% endif %}
     </div>
-   <div class="col-lg-3"> 
+   <div class="col-lg-2"> 
     {% if entity.proprietaire is not null %}   
-           <span class="glyphicon glyphicon-user"></span> <span class="label label-primary">
-{{ entity.proprietaire.username }}</span>
+           <span class="label label-primary">
+<span class="glyphicon glyphicon-user"></span> {{ entity.proprietaire.username }}</span>
      
     {% else %}
         ---
     {% endif %}
     </div>
-  <div class="col-lg-1">
+ <div class="col-lg-1">
              <span class="label label-primary">
              
                 {% if entity.comments is not null %}
@@ -78,60 +99,109 @@ MES PRODUITS
                   <span class="glyphicon glyphicon-comment"></span> 
                   </span>
    </div>
-                  
 </div>
 
 
 {#-----------------------------------------------
          ROW 2
 ----------------------------------------------#}                    
- <div class="row">
-     <div class="col-lg-12">{{ entity.description|raw }}</div>
- </div>  
- 
-{#-----------------------------------------------
-         ROW 3
-----------------------------------------------#}                    
- <div class="row">
-    <div class="col-lg-2"> 
-   <a href="{{ path('eproduit_show', { 'id': entity.id }) }}">
-        <img src="{{ asset('bundles/applicationeservices/images/detail.png') }}" alt="show" width="15" height="15" />
-    </a>
-            
-             <a href="{{ path('eproduit_edit', { 'id': entity.id }) }}">
-                        <img src="{{ asset('bundles/applicationeservices/images/edit.png') }}" alt="edit" width="15" height="15" />
-                    </a>
-        
-             <a href="{{ path('eproduit_delete', { 'id': entity.id }) }}">
-                        <img src="{{ asset('bundles/applicationeservices/images/delete.png') }}" alt="delete" width="15" height="15" />
-                    </a>
-    <a href="{{ path('enotes_addfromproduit', { 'id': entity.id }) }}">
-    <img src="{{ asset('bundles/applicationeservices/images/Stara.gif') }}" alt="show" width="15" height="15" />
-    </a>
-    </div>    
-   <div class="col-lg-2 col-lg-offset-6 pull-right"> 
+    <div class="row" style="padding-top:15px;">
+     <div class="col-lg-5 col-lg-offset-4">{{ entity.shortdescription|raw }}</div>
+      
+   <div class="col-lg-3"> 
  {% if entity.image is not null %}               
-        <img width="60px" align="right" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
+        <img width="100px" align="right" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
     {% else %}
         ---
     {% endif %}
-   </div>   
+   </div>  
+ </div>  
+
+{#-----------------------------------------------
+         ROW 3
+----------------------------------------------#}                    
+   <div class="row mywell"> 
+       <div class="col-lg-12 "> 
+   
+ <a class="btn btn-large btn-primary" href="{{ path('eproduit_show', { 'id': entity.id }) }}">
+  <i class="icon-zoom-in"></i> view</a>
+     {#<img src="{{ asset('bundles/applicationeservices/images/detail.png') }}" alt="show" width="20px" height="20px" />
+#}
+    
+            
+   {% if iseditable == 'yes' %}
+       <a class="btn btn-large btn-primary" href="{{ path('eproduit_edit', { 'id': entity.id }) }}">
+  <i class="glyphicon glyphicon-edit"></i> edit</a>
+           
+           
+             
+              
+               {#<img src="{{ asset('bundles/applicationeservices/images/edit.png') }}" alt="edit" width="20px" height="20px" />
+                 #}   </a>
+   <a class="btn btn-medium btn-danger" href="{{ path('eproduit_delete', { 'id': entity.id }) }}" href="{{ path('eproduit_delete', { 'id': entity.id }) }}">    
+   <i class="icon-comment"></i> Delete</a>
+ 
+    
+    {% endif %}
+    <a href="{{ path('enotes_addfromproduit', { 'id': entity.id }) }}">
+      <span class="glyphicon glyphicon-star yellow"></span>   
+    {#<img src="{{ asset('bundles/applicationeservices/images/Stara.gif') }}" alt="show" width="20px" height="20px" />
+    #}</a>
+    </div>    
+  
+           </div>
      </div>
             
    <!-- end class mypost -->         
- </div>  
-            
-            
+       
+      
             
            
         {% endfor %}
-        
-  {{ knp_pagination_render(paginationa) }}
+      <div class="row">
+     <div class="col-lg-12">
+         <center>
+{{ knp_pagination_render(pagination) }}
+    </center></div>
+          </div>
+  </div>
+    <div class="col-lg-3"> 
+    <div id="datepicker"></div>
+   <br/><br/>
+    {% if map is defined %}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
+   {#{{ autocomplete }}#}
+   <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />
+  
+    {{ google_map_container(map) }}
+  
+   {% endif %}
+ 
+   {% block gmap_address_widget %}
+<div id="{{ id }}_gmap_address_widget"></div>
+<div id="{{ id }}_input">{{ block('form_widget') }}</div>
+<div id="{{ id }}_map" class="gmap_address_map"></div>
+ 
+<script type="text/javascript">
+$(function() {
+            var addresspickerMap = $("#{{ form.address.get("id") }}").addresspicker({
+                regionBias: "fr",
+                elements: {
+                    map: "#{{ id }}_map",
+                    locality: '#{{ form.locality.get("id") }}',
+                    country:  '#{{ form.country.get("id") }}',
+                    lat:      "#{{ form.lat.get("id") }}",
+                    lng:      "#{{ form.lng.get("id") }}"
+                }
+            });
+            var gmarker = addresspickerMap.addresspicker("marker");
+            gmarker.setVisible(true);
+            addresspickerMap.addresspicker("updatePosition");
+    });
+</script>
+{% endblock %}
     </div>
-   <div class="col-lg-1">     
-    1
    
 </div>
-     </div>
-<br>
+
     {% endblock %}

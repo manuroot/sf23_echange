@@ -1,0 +1,13 @@
+services:
+   application_relations_twig_extension:
+        class: Application\RelationsBundle\Twig\Extensions\ApplicationRelationsExtension
+        tags:
+            - { name: twig.extension }
+   my.facebook.user:
+        class: Application\RelationsBundle\Provider\FacebookProvider
+        arguments:
+            facebook: "@fos_facebook.api"
+            userManager: "@fos_user.user_manager"
+            validator: "@validator"
+            container: "@service_container"           
+    

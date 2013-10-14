@@ -58,9 +58,6 @@
         "beberlei/DoctrineExtensions": "dev-master",
         "rizza/calendar-bundle": "dev-master",
         "braincrafted/bootstrap-bundle": "dev-master",
-        "egeloen/google-map-bundle": "*",
-        "willdurand/geocoder": "*",
-        "kriswallsmith/buzz": "*",
         "stof/doctrine-extensions-bundle": "dev-master",
         "lexik/form-filter-bundle": "dev-master",
         "savvy/filternator-bundle": "dev-master",
@@ -76,7 +73,16 @@
         "knplabs/knp-menu": "1.1.x-dev",
         "knplabs/knp-markdown-bundle": "1.2.*@dev",
         "tilleuls/ckeditor-sonata-media-bundle": "dev-master",
-        "egeloen/ckeditor-bundle": "dev-master"
+        "egeloen/ckeditor-bundle": "dev-master",
+        "egeloen/google-map-bundle": "*",
+       
+          "widop/http-adapter-bundle": "1.1.*",
+
+        "willdurand/geocoder": "*",
+        "kriswallsmith/buzz": "*",
+        "friendsofsymfony/facebook-bundle": "1.2.*",
+         "friendsofsymfony/twitter-bundle": "*"
+        
         
  
  

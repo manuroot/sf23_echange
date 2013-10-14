@@ -20,7 +20,12 @@
     position:relative;*/
 }
 </style>
+
  {% endblock %}
+
+     
+
+
 
 {% block content_header '' %}
 {% block title %}
@@ -39,7 +44,7 @@ PRODUITS DE MON GROUPE
 
 
  <div class="row">
-    <div class="col-lg-9"> 
+    <div class="col-lg-8"> 
     {% for entity in pagination %}
     <div class="mypost">
 {#-----------------------------------------------
@@ -160,9 +165,20 @@ PRODUITS DE MON GROUPE
     </center></div>
           </div>
   </div>
-    <div class="col-lg-2"> 
+    <div class="col-lg-3"> 
     <div id="datepicker"></div>
-    </div>
+   <br/><br/>
+    {% if map is defined %}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
+   {#{{ autocomplete }}#}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />#}
+ <div>Produits Locations</div>
+    {{ google_map_container(map) }}
+  
+   {% endif %}
+ {#
+<input type="reset" id="pick_addr" value="Pick Address" />#}
+
    
 </div>
 

@@ -58,7 +58,7 @@ class AppKernel extends Kernel {
             //new Application\MyNotesBundle\ApplicationMyNotesBundle(),
             new Application\EservicesBundle\ApplicationEservicesBundle(),
              new Application\RelationsBundle\ApplicationRelationsBundle(),
-            //new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             //new Application\EpostBundle\ApplicationEpostBundle(),
             //====================================================
             // FORM FILTER
