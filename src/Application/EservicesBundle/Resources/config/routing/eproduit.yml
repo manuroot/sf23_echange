@@ -28,6 +28,17 @@ eproduit_new:
     pattern:  /new
     defaults: { _controller: "ApplicationEservicesBundle:Eproduit:new" }
 
+
+eproduit_newmap:
+    pattern:  /newmap
+    defaults: { _controller: "ApplicationEservicesBundle:Eproduit:newmap" }
+
+eproduit_createmap:
+    pattern:  /createmap
+    defaults: { _controller: "ApplicationEservicesBundle:Eproduit:createmap" }
+    requirements: { _method: post }
+
+
 eproduit_create:
     pattern:  /create
     defaults: { _controller: "ApplicationEservicesBundle:Eproduit:create" }

@@ -1,0 +1,128 @@
+{% extends "ApplicationEservicesBundle::layout.html.twig" %}
+
+{% form_theme form "ApplicationEservicesBundle:Form:fields.html.twig" %}
+
+          
+{% block javascripts %}
+{{ parent() }}
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ asset('jquery/jquery.ui.addresspicker.js') }}"></script>
+{#{{ tinymce_init() }}
+      {{ form_javascript(form) }}
+
+#}
+<script type="text/javascript">
+
+         
+$(function() {
+/*var addresspicker = $( "#addresspicker" ).addresspicker({
+      componentsFilter: 'country:FR'
+    });*/
+var addresspickerMap = $( "#gmap_address_address" ).addresspicker({
+regionBias: "fr",
+      updateCallback: showCallback,
+elements: {
+map: "#map",
+lat: "#gmap_address_lat",
+lng: "#gmap_address_lng",
+street_number: '#street_number',
+route: '#route',
+locality: '#gmap_address_locality',
+administrative_area_level_2: '#administrative_area_level_2',
+administrative_area_level_1: '#administrative_area_level_1',
+country: '#gmap_address_country',
+postal_code: '#postal_code',
+        type: '#type'
+}
+});
+
+var gmarker = addresspickerMap.addresspicker( "marker");
+gmarker.setVisible(true);
+addresspickerMap.addresspicker( "updatePosition");
+
+    $('#reverseGeocode').change(function(){
+      $("#gmap_address_address").addresspicker("option", "reverseGeocode", ($(this).val() === 'true'));
+    });
+
+    function showCallback(geocodeResult, parsedGeocodeResult){
+      $('#callback_result').text(JSON.stringify(parsedGeocodeResult, null, 4));
+    }
+
+});
+</script>
+
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+     {{ form_stylesheet(form) }}
+      <style type="text/css">
+       
+#map {
+  border: 1px solid #DDD;
+  width:500px;
+  height: 500px;
+  margin: 10px 0 10px 0;
+  -webkit-box-shadow: #AAA 0px 0px 15px;
+}
+textarea#callback_result{ min-width:400px;}
+ 
+ </style>
+ {% endblock %}
+{% block content_header '' %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+
+<div class="row">
+<div class="col-md-4">
+
+        <form class="form-horizontal" role="form" id="newform" action="{{ path('eproduit_createmap') }}" method="post" {{ form_enctype(form) }}>
+            
+            {{ form_row(form.address) }} 
+           {{ form_row(form.locality) }} 
+          {#  {{ form_row(form.country, { 'attr': { 'readonly': 'true' } }) }}#}
+             {{ form_row(form.country) }} 
+             {{ form_row(form.lat) }} 
+           {{ form_row(form.lng) }} 
+                       
+{#<label>Address : </label> <input id="addresspicker_map" /> <br/>#}
+{#<label>Locality: </label> <input id="locality" disabled=disabled> #}<br/>
+<label>District: </label> <input id="administrative_area_level_2" disabled=disabled> <br/>
+<label>State/Province: </label> <input id="administrative_area_level_1" disabled=disabled> <br/>
+{#<label>Country: </label> <input id="country" disabled=disabled> <br/>#}
+<label>Postal Code: </label> <input id="postal_code" disabled=disabled> <br/>
+{#<label>Lat: </label> <input id="lat" disabled=disabled> <br/>
+<label>Lng: </label> <input id="lng" disabled=disabled> <br/>#}
+      <label>Type: </label> <input id="type" disabled=disabled /> <br/>
+            
+{{ form_rest(form) }} 
+ <button type="submit" class="btn btn-small btn-warning">Modifier</button>
+    </form>
+      </div>
+        <div class="col-md-6">
+    <div class='map-wrapper'>
+      <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
+      <select id="reverseGeocode">
+        <option value="false" selected>No</option>
+        <option value="true">Yes</option>
+      </select><br/>
+
+      <div id="map"></div>
+      <div id="legend">You can drag and drop the marker to the correct location</div>
+    </div>
+           
+       </div>
+    
+   
+        </div>
+                                 
+  
+   <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
+  
+  
+    <label>Callback: </label>
+    <textarea id='callback_result' rows="15"></textarea>
+      
+{% endblock %}

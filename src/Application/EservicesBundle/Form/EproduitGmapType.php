@@ -13,30 +13,47 @@ class EproduitGmapType extends AbstractType {
         $builder
                 ->add('address', null, array(
                     'required'      => true,
-                ))
-                ->add('locality', 'hidden', array(
+                )) 
+                ->add('locality', 'text', array(
+                      'read_only' => true,
+                   /* 'disabled' => true,*/
                     'required'      => false,
                 ))
-                ->add('country', 'hidden', array(
+                ->add('country', 'text', array(
+                     'read_only' => true,
                     'required'      => false
                 ))
-                ->add('lat', 'hidden', array(
+                ->add('lat', 'text', array(
+                      'read_only' => true,
+                   /*  'disabled' => true,*/
                     'required'      => false
                 ))
-                ->add('lng', 'hidden', array(
+                ->add('lng', 'text', array(
+                      'read_only' => true,
+                    /* 'disabled' => true,*/
                     'required'      => false
                 ))
         ;
 
 
     }
-  public function getDefaultOptions(array $options){
+    
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+          $resolver->setDefaults(array(
+            'data_class' => 'Application\EservicesBundle\Entity\Person'
+        ));
+        /*$resolver->setDefaults(array(
+            'inherit_data' => true
+        ));*/
+    }
+  /*public function getDefaultOptions(array $options){
    
    // public function setDefaultOptions(OptionsResolverInterface $resolver) {
          return array(
             'virtual'   => true, // Ici nous précisons que notre FormType est un champ virtuel
         );
-    }
+    }*/
 
     public function getName() {
         return 'gmap_address';
