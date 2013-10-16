@@ -76,53 +76,40 @@ textarea#callback_result{ min-width:400px;}
 {% block content %}
 
 <div class="row">
-<div class="col-md-4 md-offset-2">
-
-        <form class="form-horizontal" role="form" id="newform" action="{{ path('eproduit_createmap') }}" method="post" {{ form_enctype(form) }}>
-            
+    <div class="col-md-4">
+        <form class="form-horizontal" role="form" id="newform"  action="{{ path('eproduit_mapedit', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
             {{ form_row(form.address) }} 
-           {{ form_row(form.locality) }} 
-          {#  {{ form_row(form.country, { 'attr': { 'readonly': 'true' } }) }}#}
-             {{ form_row(form.country) }} 
-             {{ form_row(form.lat) }} 
-           {{ form_row(form.lng) }} 
-                       
-{#<label>Address : </label> <input id="addresspicker_map" /> <br/>#}
-{#<label>Locality: </label> <input id="locality" disabled=disabled> #}<br/>
-<label>District: </label> <br/><input id="administrative_area_level_2" disabled=disabled> <br/>
-<label>State/Province: </label><br/> <input id="administrative_area_level_1" disabled=disabled> <br/>
-{#<label>Country: </label> <input id="country" disabled=disabled> <br/>#}
-<label>Postal Code: </label> <br/><input id="postal_code" disabled=disabled> <br/>
-{#<label>Lat: </label> <input id="lat" disabled=disabled> <br/>
-<label>Lng: </label> <input id="lng" disabled=disabled> <br/>#}
-      <label>Type: </label> <br/><input id="type" disabled=disabled /> <br/>
-            
-{{ form_rest(form) }} 
- <button type="submit" class="btn btn-small btn-warning">Modifier</button>
+            {{ form_row(form.locality) }} 
+            {{ form_row(form.country) }} 
+            {{ form_row(form.lat) }} 
+            {{ form_row(form.lng) }} 
+         <br/>
+        <label>District: </label> <input id="administrative_area_level_2" disabled=disabled> <br/>
+        <label>State/Province: </label> <input id="administrative_area_level_1" disabled=disabled> <br/>
+        <label>Postal Code: </label> <input id="postal_code" disabled=disabled> <br/>
+        <label>Type: </label> <input id="type" disabled=disabled /> <br/>
+        {{ form_rest(form) }} 
+        <button type="submit" class="btn btn-small btn-warning">Modifier</button>
     </form>
-      </div>
-        <div class="col-md-6">
-    <div class='map-wrapper'>
-      <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
-      <select id="reverseGeocode">
-        <option value="false" selected>No</option>
-        <option value="true">Yes</option>
+    </div>
+    
+    <div class="col-md-6">
+        <div class='map-wrapper'>
+        <label id="geo_label" for="reverseGeocode">Reverse Geocode after Marker Drag?</label>
+        <select id="reverseGeocode">
+            <option value="false" selected>No</option>
+            <option value="true">Yes</option>
       </select><br/>
-
       <div id="map"></div>
       <div id="legend">You can drag and drop the marker to the correct location</div>
+      </div>
     </div>
-           
-       </div>
-    
-   
-        </div>
-                                 
+</div>
   
-   <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
+<a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
   
   
-    <label>Callback: </label>
-    <textarea id='callback_result' rows="15"></textarea>
+<label>Callback: </label>
+<textarea id='callback_result' rows="15"></textarea>
       
 {% endblock %}

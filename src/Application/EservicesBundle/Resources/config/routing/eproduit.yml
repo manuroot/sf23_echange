@@ -28,6 +28,9 @@ eproduit_new:
     pattern:  /new
     defaults: { _controller: "ApplicationEservicesBundle:Eproduit:new" }
 
+eproduit_mapedit:
+    pattern:  /{id}/editmap
+    defaults: { _controller: "ApplicationEservicesBundle:Eproduit:editmap" }
 
 eproduit_newmap:
     pattern:  /newmap

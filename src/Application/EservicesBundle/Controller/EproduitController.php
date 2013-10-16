@@ -213,11 +213,11 @@ class EproduitController extends Controller {
             'disableAutoPan' => true,
             'zIndex' => 10,
         ));
-        
+
         // recup des markers dans base table: Person
         $array = array("a", "b", "c");
         $lat = 44.996;
-          $arr_position = $em->getRepository('ApplicationEservicesBundle:Person')->myposition();
+        $arr_position = $em->getRepository('ApplicationEservicesBundle:Person')->myposition();
         foreach ($arr_position as $key => $value) {
 
             $marker = new Marker();
@@ -233,13 +233,13 @@ class EproduitController extends Controller {
                 'flat' => true,
                 'title' => "'" . $value[2] . "'",
             ));
-    /*       
-print_r($arr_position );
-exit(1);*/
+            /*
+              print_r($arr_position );
+              exit(1); */
 //$marker->setPosition(45.996, 0.203, true);
 //$marker->setContent('<p>Default content</p>');
 //$marker->setInfoWindow($infoWindow);
-          //  $lat +=2.0;
+            //  $lat +=2.0;
             $map->addMarker($marker);
         }
 
@@ -468,22 +468,13 @@ exit(1);*/
         $myretour = $session->get('buttonretour');
 
         $form = $this->createForm(new EproduitGmapType(), $entity);
-
         $form->bind($request);
 
- //$postData = $form->getData();
-  // print_r($request);
-           
+        //$postData = $form->getData();
+        // print_r($request);
+
         if ($form->isValid()) {
-
-         //   $postData = $request->request->get('gmap_address');
-
-        //   var_dump($postData);
-           /* if (!isset($postData['isDemande'])) {
-                
-            }*/
-            
-           //  exit(1);
+            //  exit(1);
             $entity->setFirstName("erdsfsdf");
             $entity->setLastName("rzerxcc");
             $em->persist($entity);
@@ -498,6 +489,38 @@ exit(1);*/
                     'entity' => $entity,
                     'btnretour' => $myretour,
                     'form' => $form->createView(),
+        ));
+    }
+
+    public function editmapAction($id) {
+
+        $request = $this->get('request');
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ApplicationEservicesBundle:Person')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Eproduit entity.');
+        }
+        $session = $this->getRequest()->getSession();
+        $myretour = $session->get('buttonretour');
+        $form = $this->createForm(new EproduitGmapType(), $entity);
+
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($entity);
+                $em->flush();
+                $id = $entity->getId();
+                $session->getFlashBag()->add('warning', "Enregistrement ($id) ajouté");
+                return $this->redirect($this->generateUrl('eproduit_newmap', array('id' => $entity->getId())));
+            }
+        }
+
+
+        return $this->render('ApplicationEservicesBundle:Eproduit:editmap.html.twig', array(
+                    'entity' => $entity,
+                    'btnretour' => $myretour,
+                    'form' => $form->createView(),
+                        //  'delete_form' => $deleteForm->createView(),
         ));
     }
 
