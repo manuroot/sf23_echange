@@ -12,8 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class EproduitNotesRepository extends EntityRepository {
 
-    public function myFindAll() {
+    public function oldmyFindAll() {
         return $this->createQueryBuilder('a')
+                        ->getQuery();
+
+        //->getResult();
+    }
+ public function myFindAll() {
+      /*  return $this->createQueryBuilder('a')
+                        ->getQuery();*/
+        
+             return $this->createQueryBuilder('a')
+                        ->select('a,b,c,d')
+                      ->leftJoin('a.produit', 'b')
+                     ->leftJoin('b.proprietaire', 'd')
+                     ->leftJoin('b.image', 'c')
                         ->getQuery();
 
         //->getResult();

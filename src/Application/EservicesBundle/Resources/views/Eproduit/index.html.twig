@@ -68,8 +68,8 @@
 MES PRODUITS 
 {% endblock %}
 {% block content %}
-
-{{ parent() }}
+{#
+{{ parent() }}#}
 {#
   <p id="load-webbies">
             <a href="#">Webbies</a>: 
@@ -98,14 +98,6 @@ MES PRODUITS
         </div>
     {% endfor %}
 {% endfor %}
-
-
-
-
-
-
-
-
 
 
 <div class="row">
@@ -175,7 +167,8 @@ MES PRODUITS
       {#   {{ app.request.basePath }} {{ vich_uploader_asset(message, 'image') }}#}
         {#   <img width="60px" src=" {{ app.request.basePath }} {{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
 #}
-    <img width="40px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
+    {# <img width="40px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
+   #}    <img width="60px" src="/uploads/eproduits/{{entity.image.path}}" alt="{{ entity.image.OriginalFilename }}" />
          {% else %}
            ---
          {% endif %}
@@ -216,7 +209,7 @@ MES PRODUITS
 
 </div>
         </div>
-<br><br>
+
 
 {#-----------------------------------------------#}
 

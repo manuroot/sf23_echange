@@ -110,7 +110,7 @@ PRODUITS DE MON GROUPE
       
    <div class="col-lg-3"> 
  {% if entity.image is not null %}               
-        <img width="100px" align="right" src="/uploads/eproduits/{{entity.image.path}}" alt="{{ entity.image.OriginalFilename }}" />
+        <img width="100px" align="right" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
     {% else %}
         ---
     {% endif %}

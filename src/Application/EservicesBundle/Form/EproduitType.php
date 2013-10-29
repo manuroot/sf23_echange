@@ -7,12 +7,14 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\EntityRepository;
+use  Application\EservicesBundle\Form\EproduitImageType;
+
 
 class EproduitType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-          ->add('geolocation', 'genemu_jquerygeolocation',array('mapped'=>false))
+         /* ->add('geolocation', 'genemu_jquerygeolocation',array('mapped'=>false))*/
                /* $builder->add('address', new EproduitGmapType(),array(
                     
                 'mapped'=>false)
@@ -31,25 +33,25 @@ class EproduitType extends AbstractType {
                 ))
                 ->add('shortdescription', 'textarea', array(
                     'label' => 'Résumé',
-                    'attr' => array(
-                  'cols' => "60",'rows'=>"5"),
+                    /*'attr' => array(
+                  'cols' => "20",'rows'=>"5"),*/
                 ))
 
-
-                /* ->add('description', 'textarea', array(
-                  'label' => 'Description du Produit',
-                  'attr' => array(
-                  'cols' => "60",
-                  'class' => 'tinymce',
-                  ))) */
-
                 // ->add('services')
-                //->add('image')
+          /*      ->add('image')
                 ->add('image', 'file', array(
                     'data_class' => 'Symfony\Component\HttpFoundation\File\File',
                     'property_path' => 'image',
                     'required' => false,
-        ));
+        ));*/
+        
+        ->add('image', new EproduitImageType(),array(
+              'label'=>'Image',
+              'required'=>false))
+         
+   
+         ;           
+          
 
         /* $builder->add('soccer_player', 'genemu_jqueryautocomplete_text', array(
           'suggestions' => array(

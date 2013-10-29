@@ -19,6 +19,11 @@
  form#editform {background-color:whitesmoke; }
  #application_certificatsbundle_eproduittype_description_control_group {
  min-height:600px;}
+  textarea#application_certificatsbundle_eproduittype_shortdescription{
+ width:90%;
+ margin-left:10px;
+ margin-right:10px;
+ height:200px;}
  </style>
  {% endblock %}
 {% block content_header '' %}
@@ -35,19 +40,32 @@ PRODUIT: {{ entity.name }}
         {{ form_row(edit_form.name) }}
         {{ form_row(edit_form.idStatus) }}
         {{ form_row(edit_form.categorie) }}
+         </div>
+           
+           <div class="col-lg-4"> 
+           
+             {{ form_row(edit_form.shortdescription) }}
+           </div>
+           
+         <div class="col-lg-3 col-lg-offset-1"> 
         {% if entity.image is not null %}               
-                                      <p>Image Actuelle</p>
-         <img width="150px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
+         <p>Image Actuelle</p>
+         {#<img width="150px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />#}
+         <img width="150px" src="/uploads/eproduits/{{entity.image.path}}" alt="{{ entity.imageName }}" />
+         
          {% else %}
            <p>Pas d'Image</p>
          {% endif %}
             {{ form_row(edit_form.image) }}
            </div>
-     
-            <div class="col-lg-7"> 
+           
+           
+     </div>
+         <div class="row">
+            <div class="col-lg-10 col-lg-offset-1"> 
              
  {{ form_row(edit_form.description) }}
-        {{ form_row(edit_form.shortdescription) }}
+      
 {#    {{ form_row(edit_form.address) }}#}
 {{ form_rest(edit_form) }} 
    </div>
@@ -58,11 +76,12 @@ PRODUIT: {{ entity.name }}
   <button type="submit" class="btn btn-small btn-warning">Modifier</button>
   
     <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
-   </form>       
+  
                                     
                      
 </div>                     
 </div>
+        </form>       
    <div class="row">
  <div class="col-lg-3"> 1111
 </div> 

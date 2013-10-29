@@ -84,10 +84,10 @@ PRODUIT: {{ entity.name }}
                        
             <tr>
                 <th>Image</th>
-         <td> {% if entity.imageName is not null %}               
+         <td> {% if entity.image is not null %}               
            
-         
-         <img width="220px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
+         <img width="100px" src="/uploads/eproduits/{{entity.image.path}}" alt="{{ entity.image.OriginalFilename }}" />
+         {#<img width="220px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />#}
          {% else %}
            ---
          {% endif %}

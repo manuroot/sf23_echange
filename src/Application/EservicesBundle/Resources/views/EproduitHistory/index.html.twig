@@ -60,8 +60,10 @@ HISTORIQUE DES PRETS
       {#   {{ app.request.basePath }} {{ vich_uploader_asset(message, 'image') }}#}
         {#   <img width="60px" src=" {{ app.request.basePath }} {{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
 #}
-    <img width="30px" src="{{ vich_uploader_asset(entity.produit, 'image') }}" alt="{{ entity.produit.imageName }}" />
-         {% else %}
+         <img width="80px" src="/uploads/eproduits/{{entity.produit.image.path}}" alt="{{ entity.produit.image.OriginalFilename }}" />
+   {#
+         <img width="30px" src="{{ vich_uploader_asset(entity.produit, 'image') }}" alt="{{ entity.produit.imageName }}" />
+     #}    {% else %}
            ---
          {% endif %}
            </td>
