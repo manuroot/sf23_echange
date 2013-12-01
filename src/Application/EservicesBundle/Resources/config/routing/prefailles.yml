@@ -1,0 +1,3 @@
+prefailles_index:
+    pattern:  /
+    defaults: { _controller: "ApplicationEservicesBundle:Prefailles:index" }

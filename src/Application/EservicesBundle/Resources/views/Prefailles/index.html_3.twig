@@ -1,0 +1,311 @@
+{% extends "::prefailles_base.html.twig" %}
+
+  {% block stylesheets %}
+{{ parent() }}
+
+ {% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+
+         
+ $(document).ready(function(){
+           $('.carousel').carousel({
+  interval: 5000
+});
+    }); 
+</script>
+
+
+{% endblock %}
+
+
+{% block content_header '' %}
+{% block title %}
+MES PRODUITS 
+{% endblock %}
+{% block navbar %}
+<div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top">
+      
+        <div class="navbar-header">
+	    <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+            </a>
+       <a class="navbar-brand" href="#">  <i class="fa fa-home"></i> Accueil</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          
+          
+            <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-twitter"></span> Coté Mer <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Patrimoine historique et naturel</a></li>
+          <li><a href="#">Activités, loisirs et animations</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Hébergement</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Commerces et services</a></li>
+        </ul>
+      </li>
+            <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Coté Ville<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="#">La Marie</a></li>
+          <li><a href="#">Les Elus</a></li>
+          <li><a href="#">Les démarches administratives</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Présentation de la commune</a></li>
+          <li><a href="#">Travaux et dossiers en cours</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Vivre a Préfailles</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Vos questions- Nos réponses</a></li>
+        </ul>
+      </li>
+      
+      
+         <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Recherche</button>
+    </form>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Nous contacter</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Actualités <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Actualités</a></li>
+          <li><a href="#">Actualités </a></li>
+          <li><a href="#">Actualités </a></li>
+          <li class="divider"></li>
+          <li><a href="#">Actualités </a></li>
+        </ul>
+      </li>
+    </ul>
+         
+        </div>
+
+    </div>
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+        
+        
+        
+        <div class="row">
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+        </div>
+        
+     {# <img src="{{ asset('images/bandeau_cote_mer.jpg') }}" alt="Image">  
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Bootstrap 3 Carousel Layout</h1>
+          <pThis is an example layout with carousel that uses the Bootstrap 3 styles.</small></p>
+          <p><a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Learn More</a>
+        </p></div>
+      </div>#}
+    </div>
+    <div class="item">
+        
+        
+         <div class="row">
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1714n1.JPG') }}" alt="Image">  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1699n.JPG') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+        </div>
+        
+        
+      
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Changes to the Grid</h1>
+          <p>Bootstrap 3 still features a 12-column grid, but many of the CSS class names have completely changed.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+        
+        <div class="row">
+             <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/bandeau_cote_mer.jpg') }}" alt="Image">  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+           
+           
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1699n.JPG') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+            <div class="col-sm-4 col-xs-4">  <img src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                <div class="carousel-caption">This is a caption</div>
+            </div>
+        </div>
+        
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Percentage-based sizing</h1>
+          <p>With "mobile-first" there is now only one percentage-based grid.</p>
+          <p><a class="btn btn-large btn-primary" href="#">Browse gallery</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
+</div>
+<!-- /.carousel -->
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-md-6 text-center">
+      {#<img class="img-circle" src="http://placehold.it/140x140">#}
+       <h2>ORIGINE D'UNE STATION</h2>
+        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
+        <div class="article-text">À l’origine : une eau miraculeuse
+
+Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
+
+Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
+        
+        </div> 
+      <p><a class="btn btn-large btn-primary"  href="#">Détails »</a></p>
+    </div>
+    <div class="col-md-6 text-center">
+     {# <img class="img-circle" src="http://placehold.it/140x140">#}
+      <h2>BALADES ET RANDONNEES</h2>
+        <img class="pull-right" src="{{ asset('images/visu_velo.jpg') }}" width="150px" alt="Image"/>  
+        <div class="article-text">
+             La balade récréative ou de la randonnée plus sportive se goûte à tous les âges. A Préfailles, l’océan et le grand air du large rendent le plaisir plus intense. De nombreuses possibilités sont offertes aux amateurs.
+Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la façade ouest de la France, longe l’ensemble du littoral préfaillais. Attention ! ce sentier est, depuis son origine sous la Révolution, entièrement dédié aux piétons. Les vélos et, a fortiori, tous les deux-roues motorisés n’y sont pas les bienvenus.
+        </div>
+      <p><a class="btn btn-large btn-primary" href="#">Détails »</a></p>
+    </div>
+    
+  </div><!-- /.row -->
+
+  
+  <div class="row">
+    <div class="col-md-6 text-center">
+      {#<img class="img-circle" src="http://placehold.it/140x140">#}
+       <h2>ORIGINE D'UNE STATION</h2>
+        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
+        <div class="article-text">À l’origine : une eau miraculeuse
+
+Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
+
+Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
+        
+        </div> 
+      <p><a class="btn btn-large btn-primary"  href="#">Détails »</a></p>
+    </div>
+    <div class="col-md-6 text-center">
+     {# <img class="img-circle" src="http://placehold.it/140x140">#}
+      <h2>BALADES ET RANDONNEES</h2>
+        <img class="pull-right" src="{{ asset('images/visu_velo.jpg') }}" width="150px" alt="Image"/>  
+        <div class="article-text">
+             La balade récréative ou de la randonnée plus sportive se goûte à tous les âges. A Préfailles, l’océan et le grand air du large rendent le plaisir plus intense. De nombreuses possibilités sont offertes aux amateurs.
+Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la façade ouest de la France, longe l’ensemble du littoral préfaillais. Attention ! ce sentier est, depuis son origine sous la Révolution, entièrement dédié aux piétons. Les vélos et, a fortiori, tous les deux-roues motorisés n’y sont pas les bienvenus.
+        </div>
+      <p><a class="btn btn-large btn-primary" href="#">Détails »</a></p>
+    </div>
+    
+  </div><!-- /.row -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">Responsive Design. <span class="text-muted">It'll blow your mind.</span></h2>
+    <p class="lead">In simple terms, a responsive web design figures out what resolution of device it's being served on. Flexible grids then size correctly to fit the screen.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
+    <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
+    <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
+    <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <!-- /END THE FEATURETTES -->
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>This Bootstrap layout is compliments of Bootply. · <a href="http://www.bootply.com/62603">Edit on Bootply.com</a></p>
+  </footer>
+
+</div><!-- /.container -->
+
+{% endblock %}

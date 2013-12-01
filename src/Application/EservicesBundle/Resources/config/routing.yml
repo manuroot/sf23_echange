@@ -17,3 +17,7 @@ _eproduit_history:
 _eproduit_notes:
     resource: "@ApplicationEservicesBundle/Resources/config/routing/eproduitnotes.yml"
     prefix:   /enotes   
+    
+_prefailles_all:
+    resource: "@ApplicationEservicesBundle/Resources/config/routing/prefailles.yml"
+    prefix:   /prefailles  
