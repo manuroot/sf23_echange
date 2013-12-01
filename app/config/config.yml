@@ -412,13 +412,13 @@ ivory_google_map:
         # Center coordinate of the map
         # If the autozoom flag is enabled, the center is not used
         center:
-            longitude: 0.203
-            latitude: 47.996
+            longitude: -2.2167
+            latitude: 47.1333
             no_wrap: true
 
         # Zoom of the map
         # If the autozoom flag is enabled, the zoom is not used
-        zoom: 13
+        zoom: 12
 
         # Bound of the map
         # If the auto zoom flag is not enabled, the bound is not used
@@ -439,10 +439,10 @@ ivory_google_map:
         type: "roadmap"
 
         # Map width
-        width: "400px"
+        width: "300px"
 
         # Map height
-        height: "400px"
+        height: "300px"
 
         # Custom map options
         # By default, there is no map options

@@ -56,7 +56,7 @@
         "stfalcon/tinymce-bundle": "dev-master",
          "frequence-web/calendr-bundle": "dev-master",
         "beberlei/DoctrineExtensions": "dev-master",
-        "rizza/calendar-bundle": "dev-master",
+        
         "braincrafted/bootstrap-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
         "lexik/form-filter-bundle": "dev-master",
