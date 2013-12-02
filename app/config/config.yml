@@ -412,7 +412,7 @@ ivory_google_map:
         type: "roadmap"
 
         # Map width
-        width: "380px"
+        width: "100%"
 
         # Map height
         height: "300px"

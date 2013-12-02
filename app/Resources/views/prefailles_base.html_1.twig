@@ -31,7 +31,7 @@
 }*/
 /* BOOTSTRAP 3.x GLOBAL STYLES
 -------------------------------------------------- */
-body {padding-top: 10px;
+body {padding-top: 70px;
   /*padding-bottom: 40px;*/
    margin-left:20px;margin-right:20px;
   color: #5a5a5a;
@@ -72,13 +72,11 @@ body {padding-top: 10px;
 */
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
     display: block;
-   
-height: auto;
-max-width: 100%;
-    line-height: 1;
+    height: 100%;
+    width:auto;
+    max-width: 100%;
     margin:auto;
-   /*  position: absolute;*/
- /* top: 0;*/
+    line-height: 1;
  /*      filter:blur(2px);
 -webkit-filter: blur(2px);
 -moz-filter: blur(2px);
@@ -86,9 +84,6 @@ max-width: 100%;
 -ms-filter: blur(2px);*/
     
 
-}
-img {
-    vertical-align: middle;
 }
 /*
 img {// Browser Specific
@@ -103,17 +98,16 @@ img {// Browser Specific
 
 /* Carousel base class */
 .carousel {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
 }
-.myboxtext {background-color: rgb(238, 238, 238);padding:7px;}
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: auto;
+  height: 300px;
   /*background-color:#bbb;*/
 }
 /*
@@ -204,11 +198,11 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
   }
 
   /* Navbar positioning foo */
-  /*.navbar-wrapper {
+  .navbar-wrapper {
     margin-top: 20px;
-    margin-bottom: -90px; 
+    margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
   }
-  */
+  /* The navbar becomes detached from the top, so we round the corners */
   .navbar-wrapper .navbar {
     border-radius: 4px;
   }
@@ -232,32 +226,6 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
 }
 #map_canvas{float:left;width:100%;}
 
-.carousel-fade .item {
-  opacity: 0;
-  -webkit-transition: opacity 2s ease-in-out;
-  -moz-transition: opacity 2s ease-in-out;
-  -ms-transition: opacity 2s ease-in-out;
-  -o-transition: opacity 2s ease-in-out;
-  transition: opacity 2s ease-in-out;
-  left: 0 !important;
-}
-
-.carousel-fade .active {
-  opacity: 1 !important;
-}
-
-.carousel-fade .left {
-  opacity: 0 !important;
-  -webkit-transition: opacity 0.5s ease-in-out !important;
-  -moz-transition: opacity 0.5s ease-in-out !important;
-  -ms-transition: opacity 0.5s ease-in-out !important;
-  -o-transition: opacity 0.5s ease-in-out !important;
-  transition: opacity 0.5s ease-in-out !important;
-}
-
-.carousel-fade .carousel-control {
-  opacity: 1 !important;
-}
 </style>   
    {% if map is defined %} 
 {{ google_map_css(map) }}
@@ -267,7 +235,7 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
  </head>
     <body id="bg">
     
-   <div class="page-header">
+         <div class="page-header">
              
                       {% block navbar %} 
                 {% endblock %}    
