@@ -66,7 +66,7 @@ class PrefaillesController extends Controller {
         ));
 
         // recup des markers dans base table: Person
-        $array = array("a", "b", "c");
+      /*  $array = array("a", "b", "c");
         $lat = 44.996;
         $arr_position = $em->getRepository('ApplicationEservicesBundle:Person')->myposition();
         foreach ($arr_position as $key => $value) {
@@ -91,8 +91,8 @@ class PrefaillesController extends Controller {
 //$marker->setContent('<p>Default content</p>');
 //$marker->setInfoWindow($infoWindow);
             //  $lat +=2.0;
-            $map->addMarker($marker);
-        }
+          /*  $map->addMarker($marker);
+        }**/
 
         /* $marker3=$marker;
           $marker3->setPosition(41.996, 0.203, true);
@@ -100,7 +100,7 @@ class PrefaillesController extends Controller {
 
 
 
-        $polyline = new Polyline();
+      /*  $polyline = new Polyline();
 
 // Configure your polyline options
         $polyline->setPrefixJavascriptVariable('polyline_');
@@ -124,18 +124,18 @@ class PrefaillesController extends Controller {
             'clickable' => true,
             'flat' => true,
             'title' => "sdfd"
-        ));
+        ));*/
 
 //$marker2->setPosition(45.996, 0.203, true);
 //$marker2->setContent('<p>Default content</p>');
-        $map->addMarker($marker2);
+       /* $map->addMarker($marker2);
 
 
 // Add coordinates to your polyline
         $polyline->addCoordinate(45.996, 0.203, true);
         $polyline->addCoordinate(47.996, 0.203, true);
         $map->addPolyline($polyline);
-
+*/
         /*
           $markerShape = new MarkerShape();
 
@@ -172,7 +172,7 @@ class PrefaillesController extends Controller {
 // Requests the ivory google map circle service
 //$circle = $this->get('ivory_google_map.circle');
 
-        $circle = new Circle();
+      /*  $circle = new Circle();
 // Configure your circle options
         $circle->setPrefixJavascriptVariable('circle_');
         $circle->setCenter(45.996, 0.203, true);
@@ -201,7 +201,7 @@ class PrefaillesController extends Controller {
         $autocomplete->setAsync(false);
         $autocomplete->setLanguage('en');
 
-        $autocompleteHelper = new AutocompleteHelper();
+        $autocompleteHelper = new AutocompleteHelper();*/
 
 //echo $autocompleteHelper->renderHtmlContainer($autocomplete);
 //echo $autocompleteHelper->renderJavascripts($autocomplete);

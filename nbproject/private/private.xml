@@ -4,10 +4,24 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_1.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_3.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/composer.json</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Eproduit/indexmesproduits.html.twig</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/base.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Controller/PrefaillesController.php</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/prefailles_base.html.twig</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Eproduit/index.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/navbar.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_2.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/AppKernel.php</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Eproduit/template_index.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/bootstrap.php.cache</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_4.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Controller/EproduitController.php</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/config/config.yml</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/config/parameters.yml</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/config/config_1.yml</file>
         </group>
     </open-files>
 </project-private>
