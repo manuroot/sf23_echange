@@ -28,8 +28,9 @@
 PREFAILLES
 {% endblock %}
 {% block navbar %}
-{#<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">#}
-    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+ {#<nav class="navbar navbar-default navbar-fixed-top" role="navigation">#}
+   {# <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">#}
     {#navbar-static-top#}
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -52,7 +53,6 @@ PREFAILLES
         <ul class="dropdown-menu">
           <li><a href="#">Patrimoine historique et naturel</a></li>
           <li><a href="#">Activités, loisirs et animations</a></li>
-          <li><a href="#">Something else here</a></li>
           <li class="divider"></li>
           <li><a href="#">Hébergement</a></li>
           <li class="divider"></li>
@@ -62,7 +62,7 @@ PREFAILLES
         <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Coté Ville<b class="caret"></b></a>
         <ul class="dropdown-menu">
-              <li><a href="#">La Marie</a></li>
+              <li><a href="#"><i class="fa fa-home"></i> La Marie</a></li>
           <li><a href="#"><i class="fa fa-users"></i> Les Elus</a></li>
           <li><a href="#"><i class="fa fa-pencil"></i> Les démarches administratives</a></li>
           <li class="divider"></li>
@@ -101,10 +101,14 @@ PREFAILLES
 
 <!-- Carousel
 ================================================== -->
+ <div id="logoprf"> <img src="{{ asset('images/logoprf.gif') }}" alt="Image"/>  
+          </div> 
  <div class="row">
+   
     <div class="col-md-12">
- 
+       
 <div id="myCarousel" class="carousel slide carousel-fade">
+
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -113,6 +117,7 @@ PREFAILLES
      {# <li data-target="#myCarousel" data-slide-to="3"></li>#}
   </ol>
   <div class="carousel-inner">
+      
     <div class="item active">
            <img class="myblur" src="{{ asset('images/IMG_1676big_300.jpg') }}" alt="Image"/>  
           
@@ -142,7 +147,7 @@ PREFAILLES
       <div class="container">
         <div class="carousel-caption">
           <h1>TODO text</h1>
-          <p>p text todo.</p>
+          
           <p><a class="btn btn-large btn-primary" href="#">Détails</a></p>
         </div>
       </div>
@@ -154,7 +159,7 @@ PREFAILLES
       <div class="container">
         <div class="carousel-caption">
           <h1>TODO text</h1>
-          <p>p text todo.</p>
+         
           <p><a class="btn btn-large btn-primary" href="#">Détails</a></p>
         </div>
       </div>
@@ -211,7 +216,7 @@ Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bo
 Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
         
         </div> 
-      <p><a class="btn btn-large btn-primary"  href="#">Détails »</a></p>
+      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
     </div>
     </div>
     <div class="col-md-6 text-center">
@@ -242,7 +247,7 @@ Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bo
 Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
         
         </div> 
-      <p><a class="btn btn-large btn-primary"  href="#">Détails »</a></p>
+      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
       </div>
     </div>
     <div class="col-md-6 text-center">
@@ -254,7 +259,7 @@ Sur la Grande Plage, les premières cabines font leur apparition en 1843. On com
              La balade récréative ou de la randonnée plus sportive se goûte à tous les âges. A Préfailles, l’océan et le grand air du large rendent le plaisir plus intense. De nombreuses possibilités sont offertes aux amateurs.
 Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la façade ouest de la France, longe l’ensemble du littoral préfaillais. Attention ! ce sentier est, depuis son origine sous la Révolution, entièrement dédié aux piétons. Les vélos et, a fortiori, tous les deux-roues motorisés n’y sont pas les bienvenus.
         </div>
-      <p><a class="btn btn-large btn-primary" href="#">Détails »</a></p>
+      <p><a class="btn btn-large btn-primary" href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
          </div>
     </div>
     

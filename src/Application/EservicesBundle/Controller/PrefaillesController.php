@@ -209,7 +209,7 @@ class PrefaillesController extends Controller {
 //$map->addRec;
 
  return $this->render('ApplicationEservicesBundle:Prefailles:index.html.twig', array(
-      map=>$map
+      'map'=>$map
         ));
       
 
