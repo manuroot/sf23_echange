@@ -60,7 +60,8 @@ body {padding-top: 10px;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover; 
-      background: #edfbff url(../images/bgnoise_lg.png) repeat;
+        background: #edfbff url(../images/bgnoise_lg_bleu1.png) repeat;
+   /*   background: #edfbff url(../images/bgnoise_lg.png) repeat;*/
       /* Fallback for web browsers that doesn't support RGBa *//*
 background: rgb(0, 0, 0);
 background: rgba(0, 0, 0, 0.2);
@@ -76,7 +77,12 @@ background: rgba(0, 0, 0, 0.2);
       background-image: -webkit-linear-gradient(bottom, #C8EBFA 0%, #8ED3DE 100%);
       background-image: -ms-linear-gradient(bottom, #C8EBFA 0%, #8ED3DE 100%);
       background-image: linear-gradient(to bottom, #C8EBFA 0%, #8ED3DE 100%);
-      */
+            */
+}
+.page-header {
+  
+    margin: 15px 0px 20px;
+  
 }
 /*
 #bg {
