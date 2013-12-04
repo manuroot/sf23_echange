@@ -31,10 +31,12 @@
         </div>
        {% block javascripts %}
         <script src="{{ asset('js/jquery/jquery-1.10.2.min.js') }}" type="text/javascript"></script>
+         <script src="{{ asset('jquery/jquery-migrate-1.1.1.min.js') }}" type="text/javascript"></script>
         <script type="text/javascript" src="{{ asset('js/jquery/jquery-ui-1.9.2.custom.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/blur.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/vague.js') }}"></script>
+         <script type="text/javascript" src="{{ asset('js/camera.min.js') }}"></script>
         {% if map is defined %} 
             {{ google_map_js(map) }}
         {% endif %}
@@ -61,7 +63,24 @@
                  intensity:2 //blur intensity
                  });
                  vague.blur();*/
+     /*  $('.camera_wrap').camera();
+       
+        $('.camera_wrap').camera({ //here I declared some settings, the height and the presence of the thumbnails 
+	height: '20%',
+	pagination: true,
+	thumbnails: false
+});*/
+       /*  jQuery(function(){
+			
+			jQuery('.camera_wrap').camera({
+				height: '20%'
+                                //thumbnails: true
+			});
+
+		});*/
             });
+         
+            
         </script>
 
 
