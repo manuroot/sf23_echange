@@ -2,7 +2,71 @@
 
   {% block stylesheets %}
 {{ parent() }}
+<style>
+    
+#masthead {
+	min-height:270px;
+	background-color:#000044;
+  	color:#aaaacc;
+}
 
+#masthead h1 {
+	font-size: 55px;
+	line-height: 1;
+}
+
+#masthead .well {
+	margin-top:13%;
+	background-color:#111155;
+  	border-color:#000033;
+}
+
+.icon-bar {
+	background-color:#fff;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 100px;
+	}
+}
+
+.navbar-bright {
+	background-color:#111155;
+    color:#fff;
+}
+  
+.navbar-bright a, #masthead a, #masthead .lead {
+  	color:#aaaacc;
+}
+
+.navbar-bright li > a:hover {
+    background-color:#000033;
+}
+
+.affix-top,.affix{
+	position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
+    </style>
  {% endblock %}
 
 
@@ -15,6 +79,19 @@
            $('.carousel').carousel({
   interval: 5000
   
+});
+$('#sidebar').affix({
+      offset: {
+        top: 245
+      }
+});
+
+var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 10;
+
+$body.scrollspy({
+	target: '#leftCol',
+	offset: navHeight
 });
     }); 
 </script>
@@ -212,9 +289,37 @@ PREFAILLES
 
   <!-- Three columns of text below the carousel -->
   <div class="row">
+      <div class="col-md-3" id="leftCol">
+              <div class="panel" id="sidebar">
+                <div class="panel-heading" style="color: rgb(255, 255, 255); background-color: rgb(136, 136, 136);">Navigation</div> 
+      			
+              	<ul class="nav nav-stacked" id="sidebar">
+                  <li><a href="#sec0">Plan de Préfailles</a></li>
+                  <li><a href="#sec1">Origine d'une station</a></li>
+                  <li><a href="#sec2">Origine d'une station</a></li>
+                  <li><a href="#sec3">Balades et randonnées</a></li>
+                   <li><a href="#sec4">Coté Ville</a></li>
+                    <li><a href="#sec5">Coté Mer</a></li>
+                  <li><a href="#sec4">Section 4</a></li>
+              	</ul>
+              </div>
+              </div>
+      		
+      <div class="col-md-9 text-center">
+     <h2 id="sec0"><i class="fa fa-globe"></i> PLAN DE PREFAILLES</h2>
+  {% if map is defined %}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
+   {#{{ autocomplete }}#}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />#}
+ 
+    {{ google_map_container(map) }}
+ {%endif %}
+     
+    
+      <div class="row">
     <div class="col-md-6 text-center">
       {#<img class="img-circle" src="http://placehold.it/140x140">#}
-       <h2><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
+       <h2 id="sec1"><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
         <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
       <div class="myboxtext"> 
           <div class="article-text">À l’origine : une eau miraculeuse
@@ -227,25 +332,11 @@ Sur la Grande Plage, les premières cabines font leur apparition en 1843. On com
       <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
     </div>
     </div>
-    <div class="col-md-6 text-center">
-     <h2><i class="fa fa-globe"></i> PLAN DE PREFAILLES</h2>
-  {% if map is defined %}
-  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
-   {#{{ autocomplete }}#}
-  {# <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />#}
- 
-    {{ google_map_container(map) }}
- {%endif %}
-     
-    </div>
-    
-  </div><!-- /.row -->
-
+   
   
-  <div class="row">
     <div class="col-md-6 text-center">
       {#<img class="img-circle" src="http://placehold.it/140x140">#}
-       <h2><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
+       <h2 id="sec2"><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
         <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
         <div class="myboxtext"> 
         <div class="article-text">À l’origine : une eau miraculeuse
@@ -258,9 +349,11 @@ Sur la Grande Plage, les premières cabines font leur apparition en 1843. On com
       <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
       </div>
     </div>
-    <div class="col-md-6 text-center">
+      </div>
+        <div class="row">
+    <div class="col-md-12 text-center">
      {# <img class="img-circle" src="http://placehold.it/140x140">#}
-      <h2><i class="fa fa-arrow-circle-right"></i> BALADES ET RANDONNEES</h2>
+      <h2 id="sec3"><i class="fa fa-arrow-circle-right"></i> BALADES ET RANDONNEES</h2>
         <img class="pull-right" src="{{ asset('images/visu_velo.jpg') }}" width="150px" alt="Image"/>  
          <div class="myboxtext"> 
              <div class="article-text">
@@ -276,10 +369,10 @@ Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la f
   
   
   
+  </div>
   
   
-  
-  
+  </div>
   
   
   
