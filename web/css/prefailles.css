@@ -53,16 +53,33 @@
 }*/
 /* BOOTSTRAP 3.x GLOBAL STYLES
 -------------------------------------------------- */
+
+ body {
+  background:url('images/Blurred-Background_2.jpg') #A98436 no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+
 body {padding-top: 10px;
       /*padding-bottom: 40px;*/
       margin-left:20px;margin-right:20px;
       color: #5a5a5a;
       /* background:url('/images/bg.jpg') no-repeat center center fixed; */
-      -webkit-background-size: cover;
+   /*   -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover; 
-        background: #edfbff url(../images/bgnoise_lg_bleu1.png) repeat;
+        background: #edfbff url(../images/bgnoise_lg_bleu1.png) repeat;*/
+        
+        
+        
+         background:url('/images/Blurred-Background_2.jpg') #A98436 no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
    /*   background: #edfbff url(../images/bgnoise_lg.png) repeat;*/
       /* Fallback for web browsers that doesn't support RGBa *//*
 background: rgb(0, 0, 0);
@@ -187,6 +204,9 @@ filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='10');
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
+h2{
+    color:whitesmoke;
+}
 /* Pad the edges of the mobile views a bit */
 .marketing {
     padding-left: 15px;
