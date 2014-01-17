@@ -11,26 +11,20 @@
 
 
   {% block stylesheets %}
-
-
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" />
-           <link rel="stylesheet" href="{{ asset('css/font-awesome-4.0.3/css/font-awesome.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/font-awesome-4.0.3/css/font-awesome.min.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.9.2.custom.css') }}" type="text/css" media="all"/>
         <link rel="stylesheet" href="{{ asset('theme1/bootstrap-overrides.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('theme1/theme.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('theme1/css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('theme1/index.css') }}" type="text/css" media="screen">
         <link rel="stylesheet" href="{{ asset('theme1/animate.css') }}" type="text/css" media="screen, projection">  
-
 {% endblock %}
+</head>
 
+<body class="pull_top" style="">
 
-
-    </head>
-
-    <body class="pull_top" style="">
-
-   {% block MAIN %}
+{% block NAVBAR %}
 
 
         <div class="navbar navbar-inverse navbar-fixed-top sticky" role="navigation">
@@ -67,9 +61,9 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-globe"></i> Patrimoine historique et naturel</a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-leaf"></span> Activités, loisirs et animations</a></li>
-                                <li class="divider"></li>
+                               {# <li class="divider"></li>#}
                                 <li><a href="#"><i class="fa fa-briefcase"></i> Hébergement</a></li>
-                                <li class="divider"></li>
+                                {#<li class="divider"></li>#}
                                 <li><a href="#"><i class="fa fa-cutlery"></i> Commerces et services</a></li>
                             </ul>
                         </li>
@@ -106,7 +100,7 @@
                 </div>
             </article> 
 
-          <article class="slide" id="ideas" style="background-image:url({{ asset('/theme1/aqua.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+            <article class="slide" id="ideas" style="background-image:url({{ asset('/theme1/aqua.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
                 <div class="info" style="display: none;">
                     <h2>We love to turn ideas into beautiful things.</h2>
                 </div>
@@ -114,19 +108,19 @@
                 <img class="asset left-210 sp600 t213 z2" src="{{ asset('theme1/middle.png') }}" style="left: -854px; top: 213px; z-index: 2; display: inline;">
                 <img class="asset left60 sp600 t260 z1" src="{{ asset('theme1/right.png') }}" style="left: -849px; top: 260px; z-index: 1; display: inline;">
             </article>
-           
+
             <article class="slide" id="tour" style="background-image:url({{ asset('/theme1/color-splash.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
                 <img class="asset left-472 sp650 t210 z3" src="{{ asset('images/visu_hebergement.jpg') }}" style="left: -558px; top: 210px; z-index: 3; display: inline;">
                 <img class="asset left-365 sp600 t270 z4" src="{{ asset('theme1/iphone.png') }}" style="left: -485px; top: 270px; z-index: 4; display: inline;">
-              
-                
+
+
                 {#<img class="asset left-350 sp450 t135 z2" src="{{ asset('theme1/desktop.png') }}"  style="left: -742px; top: 135px; z-index: 2; display: inline;">#}
                 <img class="asset left-350 sp450 t135 z2" src="{{ asset('images/visu_velo.jpg') }}"  style="left: -742px; top: 135px; z-index: 2; display: inline;">
-                 
+
                 <img class="asset left-185 sp550 t220 z1" src="{{ asset('theme1/macbook.png') }}"  style="left: -746px; top: 220px; z-index: 1; display: inline;">
                 <div class="info" style="display: none;">
                     <h2>Fully Responsive theme</h2>
-                    <a href="http://cleancanvas.herokuapp.com/features.html">TOUR THE PRODUCT</a>
+                    <a href="#">TOUR THE PRODUCT</a>
                 </div>
             </article>
             <article class="slide active" id="responsive" style="background-image: url({{ asset('theme1/indigo.jpg') }}); display: block; background-position: 50% 0%; background-repeat: repeat no-repeat;">
@@ -152,7 +146,11 @@
             </ul>
             <a href="" id="slide-left" style="display: inline;"></a><a href="" id="slide-right" style="display: inline;"></a>
         </section>
-        <div id="showcase">
+         {% endblock %}
+    
+    {% block MAIN %}
+    
+    <div id="showcase">
             <div class="container">
                 <div class="section_header">
                     <h3>Préfailles</h3>
@@ -165,7 +163,7 @@
 
 
                             <div class="img_box">
-                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                <a href="#">
                                     <img  src="{{ asset('images/IMG_1714n1.JPG') }}" alt="Image"/>  
 
                                     <span class="circle"> 
@@ -183,7 +181,7 @@
                         <!-- Feature -->
                         <div class="col-sm-4 feature">
                             <div class="img_box">
-                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                <a href="#">
                                     <img  src="{{ asset('images/visu_casino.jpg') }}" alt="Image"/>  
                                     <span class="circle"> 
                                         <span class="plus">+</span>
@@ -200,7 +198,7 @@
                         <!-- Feature -->
                         <div class="col-sm-4 feature last">
                             <div class="img_box">
-                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                <a href="#">
                                     <img  src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
                                     <span class="circle"> 
                                         <span class="plus">+</span>
@@ -302,7 +300,7 @@
                                         Storage
                                     </p>
                                 </div>
-                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                                <a class="order" href="#">ORDER NOW</a>
                             </div>
                         </div>
                     </div>
@@ -335,7 +333,7 @@
                                         Phone Support
                                     </p>
                                 </div>
-                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                                <a class="order" href="#">ORDER NOW</a>
                             </div>
                         </div>
                     </div>
@@ -363,14 +361,14 @@
                                         Storage
                                     </p>
                                 </div>
-                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                                <a class="order" href="#">ORDER NOW</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="start">
                     <p>Start your free, no-risk, 14 day trial! </p>
-                    <a href="http://cleancanvas.herokuapp.com/pricing.html">Start Now!</a>
+                    <a href="#">Start Now!</a>
                 </div>
             </div>
         </div>
@@ -412,24 +410,24 @@
                             Recent Posts
                         </h3>
                         <div class="post">
-                            <a href="http://cleancanvas.herokuapp.com/blogpost.html">
+                            <a href="#">
                                 <img src="/theme1/recent_post1.png" class="img-circle">
                             </a>
                             <div class="date">
                                 Wed, 12 Dec
                             </div>
-                            <a href="http://cleancanvas.herokuapp.com/blogpost.html" class="title">
+                            <a href="#" class="title">
                                 Randomised words which don't look embarrasing hidden.
                             </a>
                         </div>
                         <div class="post">
-                            <a href="http://cleancanvas.herokuapp.com/blogpost.html">
+                            <a href="#">
                                 <img src="/theme1/recent_post2.png" class="img-circle">
                             </a>
                             <div class="date">
                                 Mon, 12 Dec
                             </div>
-                            <a href="http://cleancanvas.herokuapp.com/blogpost.html" class="title">
+                            <a href="#" class="title">
                                 Randomised words which don't look embarrasing hidden.
                             </a>
                         </div>
@@ -469,31 +467,31 @@
                     <div class="col-md-12">
                         <div class="row social">
                             <div class="col-md-12">
-                                <a href="http://cleancanvas.herokuapp.com/#" class="facebook">
+                                <a href="#" class="facebook">
                                     <span class="socialicons ico1"></span>
                                     <span class="socialicons_h ico1h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="twitter">
+                                <a href="#" class="twitter">
                                     <span class="socialicons ico2"></span>
                                     <span class="socialicons_h ico2h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="gplus">
+                                <a href="#" class="gplus">
                                     <span class="socialicons ico3"></span>
                                     <span class="socialicons_h ico3h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="flickr">
+                                <a href="#" class="flickr">
                                     <span class="socialicons ico4"></span>
                                     <span class="socialicons_h ico4h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="pinterest">
+                                <a href="#" class="pinterest">
                                     <span class="socialicons ico5"></span>
                                     <span class="socialicons_h ico5h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="dribble">
+                                <a href="#" class="dribble">
                                     <span class="socialicons ico6"></span>
                                     <span class="socialicons_h ico6h"></span>
                                 </a>
-                                <a href="http://cleancanvas.herokuapp.com/#" class="behance">
+                                <a href="#" class="behance">
                                     <span class="socialicons ico7"></span>
                                     <span class="socialicons_h ico7h"></span>
                                 </a>
@@ -520,6 +518,8 @@
 
   {% block javascripts %}
         <script src="{{ asset('jquery/jquery-1.10.0.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('jquery/jquery-migrate-1.1.1.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery/jquery-ui-1.9.2.custom.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('theme1/theme.js') }}"></script>
         <script type="text/javascript" src="{{ asset('theme1/index-slider.js') }}"></script>
