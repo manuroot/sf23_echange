@@ -1,560 +1,535 @@
-{% extends "::prefailles_base.html.twig" %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+        <title>{% block headtitle %}Ville De Prefailles - Design{% endblock %}</title>
+
 
   {% block stylesheets %}
-{{ parent() }}
-<style>
-    
-#masthead {
-	min-height:270px;
-	background-color:#000044;
-  	color:#aaaacc;
-}
-
-#masthead h1 {
-	font-size: 55px;
-	line-height: 1;
-}
-
-#masthead .well {
-	margin-top:13%;
-	background-color:#111155;
-  	border-color:#000033;
-}
-
-.icon-bar {
-	background-color:#fff;
-}
-
-@media screen and (min-width: 768px) {
-	#masthead h1 {
-		font-size: 100px;
-	}
-}
-
-.navbar-bright {
-	background-color:#111155;
-    color:#fff;
-}
-  
-.navbar-bright a, #masthead a, #masthead .lead {
-  	color:#aaaacc;
-}
-
-.navbar-bright li > a:hover {
-    background-color:#000033;
-}
-
-.affix-top,.affix{
-	position: static;
-}
-
-@media (min-width: 979px) {
-  #sidebar.affix-top {
-    position: static;
-  	margin-top:30px;
-  	width:228px;
-  }
-  
-  #sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
-}
 
 
-#sidebar li.active {
-  	border:0 #eee solid;
-  	border-right-width:4px;
-}
-
-/*
-.navbar-right {float: right !important;}
-
-@media(max-width:767px)
-{
-    .navbar-right {margin-right:20px;}
-    .navbar-header:after 
-    {
-    clear: none;
-    }
-    .navbar-nav.navbar-right > li { float: left; }
-
-    .navbar-collapse:before {clear:both;}
-
-    .navbar-collapse {overflow-y: hidden;}
-    .navbar-collapse.in {overflow-y: visible;}
-    .navbar{border-color: #101010; border-width: 0 0 1px;}
-    .navbar-collapse.in > ul {border-color: #101010; border-top:1px double;}
-}*/
-
-
-    </style>
- {% endblock %}
-
-
-{% block javascripts %}
-{{ parent() }}
-<script type="text/javascript">
-
-         
- $(document).ready(function(){
-     var $body   = $(document.body);
-var navHeight = $('.navbar').outerHeight(true) + 10;
- 
-           $('.carousel').carousel({
-  interval: 5000
-  
-});
-$('#sidebar').affix({
-      offset: {
-        top: 245
-      }
-});
-
-
-$body.scrollspy({
-	target: '#leftCol',
-	offset: navHeight
-});
-
-
-$.fn.goValidate = function() {
-    var $form = this,
-        $inputs = $form.find('input:text');
-  
-    var validators = {
-        name: {
-            regex: /^[A-Za-z]{3,}$/
-        },
-        pass: {
-            regex: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
-        },
-        email: {
-            regex: /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/
-        },
-        phone: {
-            regex: /^[2-9]\d{2}-\d{3}-\d{4}$/,
-        }
-    };
-    var validate = function(klass, value) {
-        var isValid = true,
-            error = '';
-            
-        if (!value && /required/.test(klass)) {
-            error = 'This field is required';
-            isValid = false;
-        } else {
-            klass = klass.split(/\s/);
-            $.each(klass, function(i, k){
-                if (validators[k]) {
-                    if (value && !validators[k].regex.test(value)) {
-                        isValid = false;
-                        error = validators[k].error;
-                    }
-                }
-            });
-        }
-        return {
-            isValid: isValid,
-            error: error
-        }
-    };
-    var showError = function($input) {
-        var klass = $input.attr('class'),
-            value = $input.val(),
-            test = validate(klass, value);
-      
-        $input.removeClass('invalid');
-        $('#form-error').addClass('hide');
-        
-        if (!test.isValid) {
-            $input.addClass('invalid');
-            
-            if(typeof $input.data("shown") == "undefined" || $input.data("shown") == false){
-               $input.popover('show');
-            }
-            
-        }
-      else {
-        $input.popover('hide');
-      }
-    };
-   
-    $inputs.keyup(function() {
-        showError($(this));
-    });
-  
-    $inputs.on('shown.bs.popover', function () {
-  		$(this).data("shown",true);
-	});
-  
-    $inputs.on('hidden.bs.popover', function () {
-  		$(this).data("shown",false);
-	});
-  
-    $form.submit(function(e) {
-      
-        $inputs.each(function() { /* test each input */
-        	if ($(this).is('.required') || $(this).hasClass('invalid')) {
-            	showError($(this));
-        	}
-    	});
-        if ($form.find('input.invalid').length) { /* form is not valid */
-        	e.preventDefault();
-            $('#form-error').toggleClass('hide');
-        }
-    });
-    return this;
-};
-$('form').goValidate();
-    }); 
-</script>
-
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" />
+           <link rel="stylesheet" href="{{ asset('css/font-awesome-4.0.3/css/font-awesome.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/jquery-ui-1.9.2.custom.css') }}" type="text/css" media="all"/>
+        <link rel="stylesheet" href="{{ asset('theme1/bootstrap-overrides.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('theme1/theme.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('theme1/css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('theme1/index.css') }}" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{ asset('theme1/animate.css') }}" type="text/css" media="screen, projection">  
 
 {% endblock %}
 
 
-{% block content_header '' %}
-{% block title %}
-PREFAILLES
-{% endblock %}
-{% block navbar %}
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
- {#<nav class="navbar navbar-default navbar-fixed-top" role="navigation">#}
-   {# <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">#}
-    {#navbar-static-top#}
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
- <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#"><i class="fa fa-home"></i> Préfailles</a>
-  </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-       
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Mer <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><i class="fa fa-globe"></i> Patrimoine historique et naturel</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-leaf"></span> Activités, loisirs et animations</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-briefcase"></i> Hébergement</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-cutlery"></i> Commerces et services</a></li>
-        </ul>
-      </li>
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Coté Ville<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-              <li><a href="#"><i class="fa fa-home"></i> La Marie</a></li>
-          <li><a href="#"><i class="fa fa-users"></i> Les Elus</a></li>
-          <li><a href="#"><i class="fa fa-pencil"></i> Les démarches administratives</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-home"></i> Présentation de la commune</a></li>
-          <li><a href="#"><i class="fa fa-archive"></i> Travaux et dossiers en cours</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-heart"></i> Vivre a Préfailles</a></li>
-          <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-comments-o"></i> Vos questions- Nos réponses</a></li>
-        </ul>
-      </li>
-       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Actualités<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-              <li><a href="#"><i class="glyphicon glyphicon-book"></i> Actualité-Mairie</a></li>
-          <li><a href="#"><i class="glyphicon glyphicon-book"></i> Actualié- Les Elus</a></li>
-          <li><a href="#"><i class="glyphicon glyphicon-book"></i> Les démarches administratives</a></li>
-         
-        </ul>
-      </li>
-   
-       
-      
-       <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Recherche"  style="width:130px;">
-      </div>
-      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-    </form>
-    </ul>
-       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#myModal" data-toggle="modal" id="contactus"><span class="glyphicon glyphicon-envelope"></span> Nous contacter</a></li>
-      
-    </ul>
-   
-   
-  </div><!-- /.navbar-collapse -->
-</nav>
-{% endblock %}
-  {% block content %}
+    </head>
 
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Envoyer un message</h3>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal col-sm-12">
-          <div class="form-group"><label>Nom</label><input class="form-control required" placeholder="Votre nom" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
-          <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Votre message.." data-placement="top" data-trigger="manual"></textarea></div>
-          <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
-          <div class="form-group"><label>Téléphone</label><input class="form-control phone" placeholder="votre téléphone" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
-          <div class="form-group"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-envelope"></span> Envoyer!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true"><span class="fa fa-minus-circle glyphicon-envelope"></span> Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Carousel
-================================================== -->
- <div id="logoprf"> <img src="{{ asset('images/logoprf.gif') }}" alt="Image"/>  
-          </div> 
+    <body class="pull_top" style="">
 
+   {% block MAIN %}
+
+
+        <div class="navbar navbar-inverse navbar-fixed-top sticky" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="http://cleancanvas.herokuapp.com/index.html" class="navbar-brand"><strong>VILLE DE PREFAILLES</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="http://cleancanvas.herokuapp.com/index.html">HOME</a></li>
+                        <li><a href="http://cleancanvas.herokuapp.com/about-us.html"><span class="glyphicon glyphicon-home"></span>  La Marie</a></li>
+                        <li class="dropdown">
+                            <a href="http://cleancanvas.herokuapp.com/#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Ville <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="http://cleancanvas.herokuapp.com/features.html">Features</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/services.html">Services</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/portfolio.html">Portfolio</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/portfolio-item.html">Portfolio Item</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/coming-soon.html">Coming Soon</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/sign-in.html">Sign in</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/sign-up.html">Sign up</a></li>
+                                <li><a href="http://cleancanvas.herokuapp.com/backgrounds.html">Backgrounds</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Mer <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="fa fa-globe"></i> Patrimoine historique et naturel</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-leaf"></span> Activités, loisirs et animations</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="fa fa-briefcase"></i> Hébergement</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="fa fa-cutlery"></i> Commerces et services</a></li>
+                            </ul>
+                        </li>
 {#
- <div class="row">
-   
-    <div class="col-md-12">
-         <div class="camera_wrap">
-             
-               <div data-src="{{ asset('images/IMG_1676big_300.jpg') }}"></div>
-             
-                 <div data-src="{{  asset('images/IMG_1686big_300.jpg') }}"></div> 
+                    <li><a href="http://cleancanvas.herokuapp.com/pricing.html">PRICING</a></li>
+                    <li><a href="http://cleancanvas.herokuapp.com/contact.html">CONTACT US</a></li>
+                    <li><a href="http://cleancanvas.herokuapp.com/blog.html">BLOG</a></li>
+                    <li><a href="http://cleancanvas.herokuapp.com/sign-up.html">Sign up</a></li>
+                    <li><a href="http://cleancanvas.herokuapp.com/sign-in.html">Sign in</a></li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section id="feature_slider" class="">
+            <!-- 
+                Each slide is composed by <img> and .info
+                - .info's position is customized with css in index.css
+                - each <img> parallax effect is declared by the following params inside its class:
+                
+                example: class="asset left-472 sp600 t120 z3"
+                left-472 means left: -472px from the center
+                sp600 is speed transition
+                t120 is top to 120px
+                z3 is z-index to 3
+                Note: Maintain this order of params
+    
+                For the backgrounds, you can combine from the bgs folder :D
+            -->
+            <article class="slide" id="showcasing" style="background-image:url({{ asset('/theme1/landscape.png')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <img class="asset left-30 sp600 t120 z1" src="{{ asset('theme1/macbook.png') }}" style="left: -966px; top: 120px; z-index: 1; display: inline;">
+                <div class="info" style="display: none;">
+                    <h2>Beautiful theme for showcasing your works.</h2>
+                </div>
+            </article> 
+
+          <article class="slide" id="ideas" style="background-image:url({{ asset('/theme1/aqua.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <div class="info" style="display: none;">
+                    <h2>We love to turn ideas into beautiful things.</h2>
+                </div>
+                <img class="asset left-480 sp600 t260 z1" src="{{ asset('theme1/left.png') }}" style="left: -841px; top: 260px; z-index: 1; display: inline;">
+                <img class="asset left-210 sp600 t213 z2" src="{{ asset('theme1/middle.png') }}" style="left: -854px; top: 213px; z-index: 2; display: inline;">
+                <img class="asset left60 sp600 t260 z1" src="{{ asset('theme1/right.png') }}" style="left: -849px; top: 260px; z-index: 1; display: inline;">
+            </article>
+           
+            <article class="slide" id="tour" style="background-image:url({{ asset('/theme1/color-splash.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <img class="asset left-472 sp650 t210 z3" src="{{ asset('images/visu_hebergement.jpg') }}" style="left: -558px; top: 210px; z-index: 3; display: inline;">
+                <img class="asset left-365 sp600 t270 z4" src="{{ asset('theme1/iphone.png') }}" style="left: -485px; top: 270px; z-index: 4; display: inline;">
               
+                
+                {#<img class="asset left-350 sp450 t135 z2" src="{{ asset('theme1/desktop.png') }}"  style="left: -742px; top: 135px; z-index: 2; display: inline;">#}
+                <img class="asset left-350 sp450 t135 z2" src="{{ asset('images/visu_velo.jpg') }}"  style="left: -742px; top: 135px; z-index: 2; display: inline;">
                  
-</div>
-</div>
-</div>  
-#}
+                <img class="asset left-185 sp550 t220 z1" src="{{ asset('theme1/macbook.png') }}"  style="left: -746px; top: 220px; z-index: 1; display: inline;">
+                <div class="info" style="display: none;">
+                    <h2>Fully Responsive theme</h2>
+                    <a href="http://cleancanvas.herokuapp.com/features.html">TOUR THE PRODUCT</a>
+                </div>
+            </article>
+            <article class="slide active" id="responsive" style="background-image: url({{ asset('theme1/indigo.jpg') }}); display: block; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <img class="asset left-472 sp600 t120 z3" src="{{ asset('theme1/html5.png') }}" style="left: 160.5px; top: 120px; z-index: 3; display: inline;">
+                <img class="asset left-190 sp500 t120 z2" src="{{ asset('theme1/css3.png') }}" style="left: 442.5px; top: 120px; z-index: 2; display: inline;">
+                <div class="info" style="display: block;">
+                    <h2>
+                        Responsive <strong>HTML5 &amp; CSS3</strong>
+                        Theme
+                    </h2>                
+                </div>
+            </article>        
+            <ul id="pagination" style="left: 604.5px; display: block;">
+                <li class="">
+                    <a href="#showcasing">0</a>
+                </li>
+                <li class="">
+                    <a href="#ideas">1</a></li>
+                <li class="">
+                    <a href="#tour">2</a>
+                </li>
+                <li class="active"><a href="#responsive">3</a></li>
+            </ul>
+            <a href="" id="slide-left" style="display: inline;"></a><a href="" id="slide-right" style="display: inline;"></a>
+        </section>
+        <div id="showcase">
+            <div class="container">
+                <div class="section_header">
+                    <h3>Préfailles</h3>
+                </div>            
+                <div class="row feature_wrapper">
+                    <!-- Features Row -->
+                    <div class="features_op1_row">
+                        <!-- Feature -->
+                        <div class="col-sm-4 feature first">
 
- <div class="row">
-   
-    <div class="col-md-12">
-       
-<div id="myCarousel" class="carousel slide carousel-fade">
 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-   
-  </ol>
-  <div class="carousel-inner">
-      
-    <div class="item active">
-           <img class="myblur" src="{{ asset('images/IMG_1676big_300.jpg') }}" alt="Image"/>  
-          
-      
-      <div class="container">
-        <div class="carousel-caption">
-           <h1>Bienvenue à Préfailles</h1>
-          
-          <p><a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Détails
-              </a>
-        </p></div>
-      </div>
-    </div>
-  
-    <div class="item">
-     <img class="myblur" src="{{ asset('images/IMG_1686big_300.jpg') }}" alt="Image"/>  
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>TODO text</h1>
-          
-          <p><a class="btn btn-medium btn-primary" href="#">Détails</a></p>
+                            <div class="img_box">
+                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                    <img  src="{{ asset('images/IMG_1714n1.JPG') }}" alt="Image"/>  
+
+                                    <span class="circle"> 
+                                        <span class="plus">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h6>Responsive theme</h6>
+                                <p>
+                                    There are many variations of passages of generators on the  embarrassing hidden in   content here making it look like.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="col-sm-4 feature">
+                            <div class="img_box">
+                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                    <img  src="{{ asset('images/visu_casino.jpg') }}" alt="Image"/>  
+                                    <span class="circle"> 
+                                        <span class="plus">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h6>Easy customization</h6>
+                                <p>
+                                    There are many variations of passages of generators on the  embarrassing hidden in   content here making it look like.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="col-sm-4 feature last">
+                            <div class="img_box">
+                                <a href="http://cleancanvas.herokuapp.com/services.html">
+                                    <img  src="{{ asset('images/IMG_1676bcn.jpg') }}" alt="Image"/>  
+                                    <span class="circle"> 
+                                        <span class="plus">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="text">
+                                <h6>Made with love</h6>
+                                <p>
+                                    There are many variations of passages of generators on the  embarrassing hidden in   content here making it look like.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-      
-      
-       <div class="item">
-     <img class="myblur" src="{{ asset('images/IMG_1708big_300.jpg') }}" alt="Image"/>  
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>TODO text</h1>
-         
-          <p><a class="btn btn-medium btn-primary" href="#">Détails</a></p>
+
+        <div id="features">
+            <div class="container">
+                <div class="section_header">
+                    <h3>Features</h3>
+                </div> 
+                <div class="row feature">
+                    <div class="col-sm-6">
+                        <img src="/theme1/showcase1.png" class="img-responsive">
+                    </div>
+                    <div class="col-sm-6 info">
+                        <h3>
+                            <img src="/theme1/features-ico1.png">
+                            Beautiful on all devices
+                        </h3>
+                        <p>
+                            There are many variations of passages of Lorem Ipsum available, but the randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                        </p>
+                    </div>
+                </div>
+                <div class="row feature">
+                    <div class="col-sm-6 pic-right">
+                        <img src="/theme1/showcase2.png" class="pull-right img-responsive">
+                    </div>
+                    <div class="col-sm-6 info info-left">
+                        <h3>
+                            <img src="/theme1/features-ico2.png">
+                            Blog page included
+                        </h3>
+                        <p>
+                            There are many variations of passages of Lorem Ipsum available, but the randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                        </p>
+                    </div>                
+                </div>
+                <div class="row feature">
+                    <div class="col-sm-6">
+                        <img src="/theme1/showcase3.png" class="img-responsive">
+                    </div>
+                    <div class="col-sm-6 info">
+                        <h3>
+                            <img src="/theme1/features-ico3.png">
+                            Simple and clean coming soon page
+                        </h3>
+                        <p>
+                            There are many variations of passages of Lorem Ipsum available, but the randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-      
-      
-  </div>
-  <!-- Controls -->
-  <a class="left carousel-control" data-slide="prev" href="#myCarousel">
 
-    <span class="glyphicon glyphicon-chevron-left"></span>
 
-</a>
- <a class="right carousel-control" data-slide="next" href="#myCarousel">
+        <!-- Pricing Option -->
+        <div id="in_pricing">
+            <div class="container">
+                <div class="section_header">
+                    <h3>Pricing</h3>
+                </div>
 
-    <span class="glyphicon glyphicon-chevron-right"></span>
-
-</a>
-</div>
-        
-<!-- /.carousel -->
-    </div>
- </div>
- 
- {#
-<div class="jumbotron">
-				<h1>
-					Bienvenue à Préfailles
-				</h1>
-				<p>
-					text text text text text text text text text text text text text text text text text text text text text text 
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" href="#">Détails »</a>
-				</p>
-			</div>
-#}
-<!-- Marketing messaging and featurettes
-================================================== -->
-<!-- Wrap the rest of the page in another container to center all the content. -->
-
-<div class="container marketing">
-
-  <!-- Three columns of text below the carousel -->
-  <div class="row">
-      <div class="col-md-3" id="leftCol">
-              <div class="panel" id="sidebar">
-                <div class="panel-heading" style="color: rgb(255, 255, 255); background-color: rgb(136, 136, 136);">Navigation</div> 
-      			
-              	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#sec0"><i class="fa fa-globe"></i> Plan de Préfailles</a></li>
-                  <li><a href="#sec1"><i class="fa fa-tag"></i> Origine d'une station</a></li>
-                  <li><a href="#sec2"><i class="fa fa-tag"></i> Origine d'une station</a></li>
-                  <li><a href="#sec3"><i class="fa fa-arrows-alt"></i> Balades et randonnées</a></li>
-                   <li><a href="#sec4"><i class="fa fa-home"></i> Coté Ville</a></li>
-                    <li><a href="#sec5"><i class="fa fa-sun-o"></i> Coté Mer</a></li>
-                	</ul>
-              </div>
-              </div>
-      		
-      <div class="col-md-9 text-center">
-     <h2 id="sec0"><i class="fa fa-globe"></i> PLAN DE PREFAILLES</h2>
-  {% if map is defined %}
-  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
-   {#{{ autocomplete }}#}
-  {# <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />#}
- 
-    {{ google_map_container(map) }}
- {%endif %}
-     
-    
-      <div class="row">
-    <div class="col-md-6 text-center">
-      {#<img class="img-circle" src="http://placehold.it/140x140">#}
-      
-     <h2 id="sec1"><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
-        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
-      <div class="myboxtext"> 
-          <div class="article-text">À l’origine : une eau miraculeuse
-
-Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
-
-Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
-        
-        </div> 
-      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
-    </div>
-    </div>
-   
-  
-    <div class="col-md-6 text-center" id="sec2">
-      {#<img class="img-circle" src="http://placehold.it/140x140">#}
-       <h2><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
-        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
-        <div class="myboxtext"> 
-        <div class="article-text">À l’origine : une eau miraculeuse
-
-Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
-
-Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
-        
-        </div> 
-      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
-      </div>
-    </div>
-      </div>
-        <div class="row">
-    <div class="col-md-12 text-center" id="sec3">
-     {# <img class="img-circle" src="http://placehold.it/140x140">#}
-      <h2><i class="fa fa-arrow-circle-right"></i> BALADES ET RANDONNEES</h2>
-        <img class="pull-right" src="{{ asset('images/visu_velo.jpg') }}" width="150px" alt="Image"/>  
-         <div class="myboxtext"> 
-             <div class="article-text">
-             La balade récréative ou de la randonnée plus sportive se goûte à tous les âges. A Préfailles, l’océan et le grand air du large rendent le plaisir plus intense. De nombreuses possibilités sont offertes aux amateurs.
-Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la façade ouest de la France, longe l’ensemble du littoral préfaillais. Attention ! ce sentier est, depuis son origine sous la Révolution, entièrement dédié aux piétons. Les vélos et, a fortiori, tous les deux-roues motorisés n’y sont pas les bienvenus.
+                <div class="row charts_wrapp">
+                    <!-- Plan Box -->
+                    <div class="col-sm-4">
+                        <div class="plan">
+                            <div class="wrapper">
+                                <h3>Lite</h3>
+                                <div class="price">
+                                    <span class="dollar">$</span> 
+                                    <span class="qty">35</span> 
+                                    <span class="month">/month</span>
+                                </div>
+                                <div class="features">
+                                    <p>
+                                        <strong>10</strong>
+                                        Shared Projects
+                                    </p>
+                                    <p>
+                                        <strong>4</strong>
+                                        Team Members
+                                    </p>
+                                    <p>
+                                        <strong>10</strong>
+                                        Storage
+                                    </p>
+                                </div>
+                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plan Box -->
+                    <div class="col-sm-4 pro">
+                        <div class="plan">
+                            <div class="wrapper">
+                                <img class="ribbon" src="/theme1/badge.png">
+                                <h3>Pro</h3>
+                                <div class="price">
+                                    <span class="dollar">$</span> 
+                                    <span class="qty">99</span> 
+                                    <span class="month">/month</span>
+                                </div>
+                                <div class="features">
+                                    <p>
+                                        <strong>10</strong>
+                                        Shared Projects
+                                    </p>
+                                    <p>
+                                        <strong>25</strong>
+                                        Team Members
+                                    </p>
+                                    <p>
+                                        <strong>Unlimited</strong>
+                                        Storage
+                                    </p>
+                                    <p>
+                                        <strong>Plus </strong>
+                                        Phone Support
+                                    </p>
+                                </div>
+                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Plan Box -->
+                    <div class="col-sm-4 standar">
+                        <div class="plan">
+                            <div class="wrapper">
+                                <h3>Standard</h3>
+                                <div class="price">
+                                    <span class="dollar">$</span> 
+                                    <span class="qty">65</span> 
+                                    <span class="month">/month</span>
+                                </div>
+                                <div class="features">
+                                    <p>
+                                        <strong>10</strong>
+                                        Shared Projects
+                                    </p>
+                                    <p>
+                                        <strong>4</strong>
+                                        Team Members
+                                    </p>
+                                    <p>
+                                        <strong>10</strong>
+                                        Storage
+                                    </p>
+                                </div>
+                                <a class="order" href="http://cleancanvas.herokuapp.com/pricing.html">ORDER NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="start">
+                    <p>Start your free, no-risk, 14 day trial! </p>
+                    <a href="http://cleancanvas.herokuapp.com/pricing.html">Start Now!</a>
+                </div>
+            </div>
         </div>
-      <p><a class="btn btn-large btn-primary" href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
-         </div>
-    </div>
-    
-  </div><!-- /.row -->
-  
-  
-  
-  
-  </div>
-  
-  
-  </div>
-  
-  
-  
 
-  <!-- START THE FEATURETTES -->
+        <div id="clients">
+            <div class="container">
+                <div class="section_header">
+                    <h3>Clients</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client1"></div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client2"></div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client3"></div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client1"></div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client2"></div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 client">
+                        <div class="img client3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <hr class="featurette-divider">
-{#
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
-    <h2 class="featurette-heading">Responsive Design. <span class="text-muted">It'll blow your mind.</span></h2>
-    <p class="lead">In simple terms, a responsive web design figures out what resolution of device it's being served on. Flexible grids then size correctly to fit the screen.</p>
-  </div>
+        <!-- starts footer -->
+        <footer id="footer">
+            <div class="container">
+                <div class="row sections">
+                    <div class="col-sm-4 recent_posts">
+                        <h3 class="footer_header">
+                            Recent Posts
+                        </h3>
+                        <div class="post">
+                            <a href="http://cleancanvas.herokuapp.com/blogpost.html">
+                                <img src="/theme1/recent_post1.png" class="img-circle">
+                            </a>
+                            <div class="date">
+                                Wed, 12 Dec
+                            </div>
+                            <a href="http://cleancanvas.herokuapp.com/blogpost.html" class="title">
+                                Randomised words which don't look embarrasing hidden.
+                            </a>
+                        </div>
+                        <div class="post">
+                            <a href="http://cleancanvas.herokuapp.com/blogpost.html">
+                                <img src="/theme1/recent_post2.png" class="img-circle">
+                            </a>
+                            <div class="date">
+                                Mon, 12 Dec
+                            </div>
+                            <a href="http://cleancanvas.herokuapp.com/blogpost.html" class="title">
+                                Randomised words which don't look embarrasing hidden.
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 testimonials">
+                        <h3 class="footer_header">
+                            Testimonials
+                        </h3>
+                        <div class="wrapper">
+                            <div class="quote">
+                                <span>“</span>
+                                There are many variations of passages of randomised words which don't look even slightly believable. You need to be sure there isn't anything embarrassing of text.
+                                <span></span>
+                            </div>
+                            <div class="author">
+                                <img src="/theme1/user-display.png">
+                                <div class="name">Alejandra Galvan Castillo</div>
+                                <div class="info">
+                                    Details Canvas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 contact">
+                        <h3 class="footer_header">
+                            Contact
+                        </h3>
+                        <form action="http://cleancanvas.herokuapp.com/#" method="post">
+                            <input type="text" placeholder="Your name">
+                            <input type="text" placeholder="Your email">
+                            <textarea rows="3" placeholder="Message"></textarea>
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+                <div class="row credits">
+                    <div class="col-md-12">
+                        <div class="row social">
+                            <div class="col-md-12">
+                                <a href="http://cleancanvas.herokuapp.com/#" class="facebook">
+                                    <span class="socialicons ico1"></span>
+                                    <span class="socialicons_h ico1h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="twitter">
+                                    <span class="socialicons ico2"></span>
+                                    <span class="socialicons_h ico2h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="gplus">
+                                    <span class="socialicons ico3"></span>
+                                    <span class="socialicons_h ico3h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="flickr">
+                                    <span class="socialicons ico4"></span>
+                                    <span class="socialicons_h ico4h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="pinterest">
+                                    <span class="socialicons ico5"></span>
+                                    <span class="socialicons_h ico5h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="dribble">
+                                    <span class="socialicons ico6"></span>
+                                    <span class="socialicons_h ico6h"></span>
+                                </a>
+                                <a href="http://cleancanvas.herokuapp.com/#" class="behance">
+                                    <span class="socialicons ico7"></span>
+                                    <span class="socialicons_h ico7h"></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row copyright">
+                            <div class="col-md-12">
+                                © 2013 Clean Canvas. All rights reserved. Theme by Detail Canvas.
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </footer>
 
-  <hr class="featurette-divider">
+        <!-- Scripts -->
 
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
-    <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
-    <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
-  </div>
 
-  <hr class="featurette-divider">
 
-  <div class="featurette">
-    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
-    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
-    <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
-  </div>
 
-  <hr class="featurette-divider">
-#}
-  <!-- /END THE FEATURETTES -->
+                 {% endblock %}
 
-  <!-- FOOTER -->
-  <footer>
-    <p class="pull-right"><a href="#">Back to top</a></p>
-    <p>M.Rottereau - Sample Design - dec 2013 </p>
-  </footer>
 
-</div><!-- /.container -->
 
-{% endblock %}
+  {% block javascripts %}
+        <script src="{{ asset('jquery/jquery-1.10.0.js') }}" type="text/javascript"></script>
+        <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('theme1/theme.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('theme1/index-slider.js') }}"></script>
+
+ {% endblock %}        
+
+        <!-- Le javascript ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+
+    </body>
+
+</html>

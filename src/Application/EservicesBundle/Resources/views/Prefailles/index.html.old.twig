@@ -1,0 +1,560 @@
+{% extends "::prefailles_base.html.twig" %}
+
+  {% block stylesheets %}
+{{ parent() }}
+<style>
+    
+#masthead {
+	min-height:270px;
+	background-color:#000044;
+  	color:#aaaacc;
+}
+
+#masthead h1 {
+	font-size: 55px;
+	line-height: 1;
+}
+
+#masthead .well {
+	margin-top:13%;
+	background-color:#111155;
+  	border-color:#000033;
+}
+
+.icon-bar {
+	background-color:#fff;
+}
+
+@media screen and (min-width: 768px) {
+	#masthead h1 {
+		font-size: 100px;
+	}
+}
+
+.navbar-bright {
+	background-color:#111155;
+    color:#fff;
+}
+  
+.navbar-bright a, #masthead a, #masthead .lead {
+  	color:#aaaacc;
+}
+
+.navbar-bright li > a:hover {
+    background-color:#000033;
+}
+
+.affix-top,.affix{
+	position: static;
+}
+
+@media (min-width: 979px) {
+  #sidebar.affix-top {
+    position: static;
+  	margin-top:30px;
+  	width:228px;
+  }
+  
+  #sidebar.affix {
+    position: fixed;
+    top:70px;
+    width:228px;
+  }
+}
+
+
+#sidebar li.active {
+  	border:0 #eee solid;
+  	border-right-width:4px;
+}
+
+/*
+.navbar-right {float: right !important;}
+
+@media(max-width:767px)
+{
+    .navbar-right {margin-right:20px;}
+    .navbar-header:after 
+    {
+    clear: none;
+    }
+    .navbar-nav.navbar-right > li { float: left; }
+
+    .navbar-collapse:before {clear:both;}
+
+    .navbar-collapse {overflow-y: hidden;}
+    .navbar-collapse.in {overflow-y: visible;}
+    .navbar{border-color: #101010; border-width: 0 0 1px;}
+    .navbar-collapse.in > ul {border-color: #101010; border-top:1px double;}
+}*/
+
+
+    </style>
+ {% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+
+         
+ $(document).ready(function(){
+     var $body   = $(document.body);
+var navHeight = $('.navbar').outerHeight(true) + 10;
+ 
+           $('.carousel').carousel({
+  interval: 5000
+  
+});
+$('#sidebar').affix({
+      offset: {
+        top: 245
+      }
+});
+
+
+$body.scrollspy({
+	target: '#leftCol',
+	offset: navHeight
+});
+
+
+$.fn.goValidate = function() {
+    var $form = this,
+        $inputs = $form.find('input:text');
+  
+    var validators = {
+        name: {
+            regex: /^[A-Za-z]{3,}$/
+        },
+        pass: {
+            regex: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/
+        },
+        email: {
+            regex: /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/
+        },
+        phone: {
+            regex: /^[2-9]\d{2}-\d{3}-\d{4}$/,
+        }
+    };
+    var validate = function(klass, value) {
+        var isValid = true,
+            error = '';
+            
+        if (!value && /required/.test(klass)) {
+            error = 'This field is required';
+            isValid = false;
+        } else {
+            klass = klass.split(/\s/);
+            $.each(klass, function(i, k){
+                if (validators[k]) {
+                    if (value && !validators[k].regex.test(value)) {
+                        isValid = false;
+                        error = validators[k].error;
+                    }
+                }
+            });
+        }
+        return {
+            isValid: isValid,
+            error: error
+        }
+    };
+    var showError = function($input) {
+        var klass = $input.attr('class'),
+            value = $input.val(),
+            test = validate(klass, value);
+      
+        $input.removeClass('invalid');
+        $('#form-error').addClass('hide');
+        
+        if (!test.isValid) {
+            $input.addClass('invalid');
+            
+            if(typeof $input.data("shown") == "undefined" || $input.data("shown") == false){
+               $input.popover('show');
+            }
+            
+        }
+      else {
+        $input.popover('hide');
+      }
+    };
+   
+    $inputs.keyup(function() {
+        showError($(this));
+    });
+  
+    $inputs.on('shown.bs.popover', function () {
+  		$(this).data("shown",true);
+	});
+  
+    $inputs.on('hidden.bs.popover', function () {
+  		$(this).data("shown",false);
+	});
+  
+    $form.submit(function(e) {
+      
+        $inputs.each(function() { /* test each input */
+        	if ($(this).is('.required') || $(this).hasClass('invalid')) {
+            	showError($(this));
+        	}
+    	});
+        if ($form.find('input.invalid').length) { /* form is not valid */
+        	e.preventDefault();
+            $('#form-error').toggleClass('hide');
+        }
+    });
+    return this;
+};
+$('form').goValidate();
+    }); 
+</script>
+
+
+{% endblock %}
+
+
+{% block content_header '' %}
+{% block title %}
+PREFAILLES
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+ {#<nav class="navbar navbar-default navbar-fixed-top" role="navigation">#}
+   {# <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">#}
+    {#navbar-static-top#}
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><i class="fa fa-home"></i> Préfailles</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+       
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Mer <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="fa fa-globe"></i> Patrimoine historique et naturel</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-leaf"></span> Activités, loisirs et animations</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-briefcase"></i> Hébergement</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-cutlery"></i> Commerces et services</a></li>
+        </ul>
+      </li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Coté Ville<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="#"><i class="fa fa-home"></i> La Marie</a></li>
+          <li><a href="#"><i class="fa fa-users"></i> Les Elus</a></li>
+          <li><a href="#"><i class="fa fa-pencil"></i> Les démarches administratives</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-home"></i> Présentation de la commune</a></li>
+          <li><a href="#"><i class="fa fa-archive"></i> Travaux et dossiers en cours</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-heart"></i> Vivre a Préfailles</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-comments-o"></i> Vos questions- Nos réponses</a></li>
+        </ul>
+      </li>
+       <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span> Actualités<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+              <li><a href="#"><i class="glyphicon glyphicon-book"></i> Actualité-Mairie</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-book"></i> Actualié- Les Elus</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-book"></i> Les démarches administratives</a></li>
+         
+        </ul>
+      </li>
+   
+       
+      
+       <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Recherche"  style="width:130px;">
+      </div>
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+    </ul>
+       <ul class="nav navbar-nav navbar-right">
+      <li><a href="#myModal" data-toggle="modal" id="contactus"><span class="glyphicon glyphicon-envelope"></span> Nous contacter</a></li>
+      
+    </ul>
+   
+   
+  </div><!-- /.navbar-collapse -->
+</nav>
+{% endblock %}
+  {% block content %}
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Envoyer un message</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal col-sm-12">
+          <div class="form-group"><label>Nom</label><input class="form-control required" placeholder="Votre nom" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
+          <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Votre message.." data-placement="top" data-trigger="manual"></textarea></div>
+          <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
+          <div class="form-group"><label>Téléphone</label><input class="form-control phone" placeholder="votre téléphone" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
+          <div class="form-group"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-envelope"></span> Envoyer!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><span class="fa fa-minus-circle glyphicon-envelope"></span> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Carousel
+================================================== -->
+ <div id="logoprf"> <img src="{{ asset('images/logoprf.gif') }}" alt="Image"/>  
+          </div> 
+
+{#
+ <div class="row">
+   
+    <div class="col-md-12">
+         <div class="camera_wrap">
+             
+               <div data-src="{{ asset('images/IMG_1676big_300.jpg') }}"></div>
+             
+                 <div data-src="{{  asset('images/IMG_1686big_300.jpg') }}"></div> 
+              
+                 
+</div>
+</div>
+</div>  
+#}
+
+ <div class="row">
+   
+    <div class="col-md-12">
+       
+<div id="myCarousel" class="carousel slide carousel-fade">
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+   
+  </ol>
+  <div class="carousel-inner">
+      
+    <div class="item active">
+           <img class="myblur" src="{{ asset('images/IMG_1676big_300.jpg') }}" alt="Image"/>  
+          
+      
+      <div class="container">
+        <div class="carousel-caption">
+           <h1>Bienvenue à Préfailles</h1>
+          
+          <p><a class="btn btn-lg btn-primary" href="http://getbootstrap.com">Détails
+              </a>
+        </p></div>
+      </div>
+    </div>
+  
+    <div class="item">
+     <img class="myblur" src="{{ asset('images/IMG_1686big_300.jpg') }}" alt="Image"/>  
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>TODO text</h1>
+          
+          <p><a class="btn btn-medium btn-primary" href="#">Détails</a></p>
+        </div>
+      </div>
+    </div>
+      
+      
+       <div class="item">
+     <img class="myblur" src="{{ asset('images/IMG_1708big_300.jpg') }}" alt="Image"/>  
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>TODO text</h1>
+         
+          <p><a class="btn btn-medium btn-primary" href="#">Détails</a></p>
+        </div>
+      </div>
+    </div>
+      
+      
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" data-slide="prev" href="#myCarousel">
+
+    <span class="glyphicon glyphicon-chevron-left"></span>
+
+</a>
+ <a class="right carousel-control" data-slide="next" href="#myCarousel">
+
+    <span class="glyphicon glyphicon-chevron-right"></span>
+
+</a>
+</div>
+        
+<!-- /.carousel -->
+    </div>
+ </div>
+ 
+ {#
+<div class="jumbotron">
+				<h1>
+					Bienvenue à Préfailles
+				</h1>
+				<p>
+					text text text text text text text text text text text text text text text text text text text text text text 
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" href="#">Détails »</a>
+				</p>
+			</div>
+#}
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+      <div class="col-md-3" id="leftCol">
+              <div class="panel" id="sidebar">
+                <div class="panel-heading" style="color: rgb(255, 255, 255); background-color: rgb(136, 136, 136);">Navigation</div> 
+      			
+              	<ul class="nav nav-stacked" id="sidebar">
+                  <li><a href="#sec0"><i class="fa fa-globe"></i> Plan de Préfailles</a></li>
+                  <li><a href="#sec1"><i class="fa fa-tag"></i> Origine d'une station</a></li>
+                  <li><a href="#sec2"><i class="fa fa-tag"></i> Origine d'une station</a></li>
+                  <li><a href="#sec3"><i class="fa fa-arrows-alt"></i> Balades et randonnées</a></li>
+                   <li><a href="#sec4"><i class="fa fa-home"></i> Coté Ville</a></li>
+                    <li><a href="#sec5"><i class="fa fa-sun-o"></i> Coté Mer</a></li>
+                	</ul>
+              </div>
+              </div>
+      		
+      <div class="col-md-9 text-center">
+     <h2 id="sec0"><i class="fa fa-globe"></i> PLAN DE PREFAILLES</h2>
+  {% if map is defined %}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="foo" />#}
+   {#{{ autocomplete }}#}
+  {# <input id="place_autocomplete" type="text" placeholder="off" value="Paris" />#}
+ 
+    {{ google_map_container(map) }}
+ {%endif %}
+     
+    
+      <div class="row">
+    <div class="col-md-6 text-center">
+      {#<img class="img-circle" src="http://placehold.it/140x140">#}
+      
+     <h2 id="sec1"><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
+        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
+      <div class="myboxtext"> 
+          <div class="article-text">À l’origine : une eau miraculeuse
+
+Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
+
+Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
+        
+        </div> 
+      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
+    </div>
+    </div>
+   
+  
+    <div class="col-md-6 text-center" id="sec2">
+      {#<img class="img-circle" src="http://placehold.it/140x140">#}
+       <h2><i class="fa fa-arrow-circle-right"></i> ORIGINE D'UNE STATION</h2>
+        <img class="pull-right" src="{{ asset('images/visu_casino.jpg') }}" width="120px" style="margin:3px;" alt="Image"/>  
+        <div class="myboxtext"> 
+        <div class="article-text">À l’origine : une eau miraculeuse
+
+Un jour de 1788, révélant les vertus de la source ferrugineuse, un médecin bouleverse le destin de Préfailles. Entre autres fléaux, l’eau combat les maladies infectieuses, alors très répandues. C’est l’arrivée des premiers curistes. La pratique des bains de mer, qui se développe en France dès 1810 pour des raisons thérapeutiques, accroît bientôt la fréquentation de la station.
+
+Sur la Grande Plage, les premières cabines font leur apparition en 1843. On comptera en 1924 pas moins de trois rangées de tentes fixes ou mobiles, ces dernières évoluant en fonction des marées. En 1846, l’établissement de bains ouvre ses portes. Agrandi, embelli au fil des années, il devient casino en 1923. Un casino sans roulette ni machine à sous, équipé de chambres, d’un restaurant, d’une pâtisserie, de salles de bridge, de bal et de spectacle. Le bâtiment brûlera mystérieusement en 1945. 
+        
+        </div> 
+      <p><a class="btn btn-large btn-primary"  href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
+      </div>
+    </div>
+      </div>
+        <div class="row">
+    <div class="col-md-12 text-center" id="sec3">
+     {# <img class="img-circle" src="http://placehold.it/140x140">#}
+      <h2><i class="fa fa-arrow-circle-right"></i> BALADES ET RANDONNEES</h2>
+        <img class="pull-right" src="{{ asset('images/visu_velo.jpg') }}" width="150px" alt="Image"/>  
+         <div class="myboxtext"> 
+             <div class="article-text">
+             La balade récréative ou de la randonnée plus sportive se goûte à tous les âges. A Préfailles, l’océan et le grand air du large rendent le plaisir plus intense. De nombreuses possibilités sont offertes aux amateurs.
+Le célèbre sentier douanier, tronçon du GR8 qui parcourt la totalité de la façade ouest de la France, longe l’ensemble du littoral préfaillais. Attention ! ce sentier est, depuis son origine sous la Révolution, entièrement dédié aux piétons. Les vélos et, a fortiori, tous les deux-roues motorisés n’y sont pas les bienvenus.
+        </div>
+      <p><a class="btn btn-large btn-primary" href="#"><i class="fa fa-arrow-circle-o-right"></i> Détails »</a></p>
+         </div>
+    </div>
+    
+  </div><!-- /.row -->
+  
+  
+  
+  
+  </div>
+  
+  
+  </div>
+  
+  
+  
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+{#
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">Responsive Design. <span class="text-muted">It'll blow your mind.</span></h2>
+    <p class="lead">In simple terms, a responsive web design figures out what resolution of device it's being served on. Flexible grids then size correctly to fit the screen.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-left" src="http://placehold.it/512">
+    <h2 class="featurette-heading">Smaller Footprint. <span class="text-muted">Lightweight.</span></h2>
+    <p class="lead">The new Bootstrap 3 promises to be a smaller build. The separate Bootstrap base and responsive.css files have now been merged into one. There is no more fixed grid, only fluid.</p>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="featurette">
+    <img class="featurette-image img-circle pull-right" src="http://placehold.it/512">
+    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Flatness.</span></h2>
+    <p class="lead">A big design trend for 2013 is "flat" design. Gone are the days of excessive gradients and shadows. Designers are producing cleaner flat designs, and Bootstrap 3 takes advantage of this minimalist trend.</p>
+  </div>
+
+  <hr class="featurette-divider">
+#}
+  <!-- /END THE FEATURETTES -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>M.Rottereau - Sample Design - dec 2013 </p>
+  </footer>
+
+</div><!-- /.container -->
+
+{% endblock %}
