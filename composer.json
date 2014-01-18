@@ -42,6 +42,7 @@
     	"sonata-project/formatter-bundle": "dev-master",
         "sonata-project/news-bundle": "dev-master",
         "sonata-project/intl-bundle": "dev-master",
+          "sonata-project/core-bundle": "~2.2@dev",
         "genemu/form-bundle": "dev-master",
         "sonata-project/google-authenticator": "1.0.0",
         "sonata-project/markitup-bundle" : "dev-master",
