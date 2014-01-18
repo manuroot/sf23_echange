@@ -133,14 +133,14 @@
         
                     For the backgrounds, you can combine from the bgs folder :D
                 -->
-                <article class="slide" id="showcasing" style="background-image:url({{ asset('/theme1/landscape.png')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <article class="slide" id="showcasing" style="background-image:url({{ asset('theme1/landscape.png')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
                     <img class="asset left-30 sp600 t120 z1" src="{{ asset('theme1/macbook.png') }}" style="left: -966px; top: 120px; z-index: 1; display: inline;">
                     <div class="info" style="display: none;">
                         <h2>Beautiful theme for showcasing your works.</h2>
                     </div>
                 </article> 
 
-                <article class="slide" id="ideas" style="background-image:url({{ asset('/theme1/aqua.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <article class="slide" id="ideas" style="background-image:url({{ asset('theme1/aqua.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
                     <div class="info" style="display: none;">
                         <h2>Images de Préfailles.</h2>
                     </div>
@@ -149,7 +149,7 @@
                     <img class="asset left60 sp600 t260 z1" src="{{ asset('theme1/right.png') }}" style="left: -849px; top: 260px; z-index: 1; display: inline;">
                 </article>
 
-                <article class="slide" id="tour" style="background-image:url({{ asset('/theme1/color-splash.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
+                <article class="slide" id="tour" style="background-image:url({{ asset('theme1/color-splash.jpg')}}); display: none; background-position: 50% 0%; background-repeat: repeat no-repeat;">
                     <img class="asset left-472 sp650 t210 z3" src="{{ asset('images/prefailles/visu_hebergement.jpg') }}" style="left: -558px; top: 210px; z-index: 3; display: inline;">
                     <img class="asset left-365 sp600 t270 z4" src="{{ asset('theme1/iphone.png') }}" style="left: -485px; top: 270px; z-index: 4; display: inline;">
 
@@ -320,11 +320,12 @@
                     </div> 
                     <div class="row feature">
                         <div class="col-sm-6">
-                            <img src="/theme1/showcase1.png" class="img-responsive">
+                            <img src="{{ asset('theme1/showcase1.png') }}" class="img-responsive">
                         </div>
                         <div class="col-sm-6 info">
                             <h3>
-                                <img src="/theme1/features-ico1.png">
+                                 <img src="{{ asset('theme1/features-ico1.png') }}" class="img-responsive">
+                              
                                 Application WEB "FULL RESPONSIVE
                             </h3>
                             <p>
@@ -334,11 +335,11 @@
                     </div>
                     <div class="row feature">
                         <div class="col-sm-6 pic-right">
-                            <img src="/theme1/showcase2.png" class="pull-right img-responsive">
+                            <img src="{{ asset('theme1/showcase2.png') }}" class="pull-right img-responsive">
                         </div>
                         <div class="col-sm-6 info info-left">
                             <h3>
-                                <img src="/theme1/features-ico2.png">
+                                <img src="{{ asset('theme1/features-ico2.png') }}" class="img-responsive">
                                 Blog page included
                             </h3>
                             <p>
@@ -348,11 +349,13 @@
                     </div>
                     <div class="row feature">
                         <div class="col-sm-6">
-                            <img src="/theme1/showcase3.png" class="img-responsive">
+                            <img src="{{ asset('theme1/showcase3.png') }}" class="img-responsive">
+                   
                         </div>
                         <div class="col-sm-6 info">
                             <h3>
-                                <img src="/theme1/features-ico3.png">
+                                  <img src="{{ asset('theme1/features-ico3.png') }}" class="img-responsive">
+                            
                                 Simple and clean coming soon page
                             </h3>
                             <p>
@@ -405,7 +408,8 @@
                         <div class="col-sm-4 pro">
                             <div class="plan">
                                 <div class="wrapper">
-                                    <img class="ribbon" src="/theme1/badge.png">
+                                      
+                                    <img class="ribbon" src="{{ asset('theme1/badge.png') }}">
                                     <h3>Pro</h3>
                                     <div class="price">
                                         <span class="dollar">$</span> 
@@ -512,7 +516,8 @@
                             </h3>
                             <div class="post">
                                 <a href="#">
-                                    <img src="/theme1/recent_post1.png" class="img-circle">
+                                     <img class="ribbon" src=>
+                                    <img src="{{ asset('theme1/recent_post1.png') }}" class="img-circle">
                                 </a>
                                 <div class="date">
                                     Wed, 12 Dec
@@ -523,7 +528,8 @@
                             </div>
                             <div class="post">
                                 <a href="#">
-                                    <img src="/theme1/recent_post2.png" class="img-circle">
+                                        <img src="{{ asset('theme1/recent_post2.png') }}" class="img-circle">
+                               
                                 </a>
                                 <div class="date">
                                     Mon, 12 Dec
@@ -544,7 +550,8 @@
                                     <span></span>
                                 </div>
                                 <div class="author">
-                                    <img src="/theme1/user-display.png">
+                                         <img src="{{ asset('theme1/user-display.png') }}" class="img-circle">
+                                   
                                     <div class="name">Alejandra Galvan Castillo</div>
                                     <div class="info">
                                         Details Canvas
