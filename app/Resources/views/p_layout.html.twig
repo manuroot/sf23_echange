@@ -105,6 +105,12 @@
                     <li><a href="http://cleancanvas.herokuapp.com/sign-up.html">Sign up</a></li>
                     <li><a href="http://cleancanvas.herokuapp.com/sign-in.html">Sign in</a></li>#}
                         </ul>
+                        
+                        
+                         <ul class="nav navbar-nav navbar-right">
+      <li><a href="#myModal" data-toggle="modal" id="contactus"><span class="glyphicon glyphicon-envelope"></span> Nous contacter</a></li>
+      
+    </ul>
                     </div>
                 </div>
             </div>
@@ -182,6 +188,39 @@
             </section>
 {% endblock %}
 
+            
+            
+            
+            
+            
+     {% block contact %}       
+            
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Envoyer un message</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal col-sm-12">
+          <div class="form-group"><label>Nom</label><input class="form-control required" placeholder="Votre nom" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text"></div>
+          <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Votre message.." data-placement="top" data-trigger="manual"></textarea></div>
+          <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text"></div>
+          <div class="form-group"><label>Téléphone</label><input class="form-control phone" placeholder="votre téléphone" data-placement="top" data-trigger="manual" data-content="Must be a valid phone number (999-999-9999)" type="text"></div>
+          <div class="form-group"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-envelope"></span> Envoyer!</button> <p class="help-block pull-left text-danger hide" id="form-error">&nbsp; The form is not valid. </p></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><span class="fa fa-minus-circle glyphicon-envelope"></span> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+            
+{% endblock %}
+
+               
 {% block main_part1 %}
 
             <div id="showcase">
