@@ -230,7 +230,7 @@ $(document).ready(function () {
             $(".slide.active img.fade,.slide.active .info").fadeIn(600, "easeInOutQuad", function () {
                 $("#feature_slider").removeClass()
             })
-        }, 800)
+        }, 3000)
     }
     function c() {
         $("#feature_slider").addClass("disabled").append('<ul id="pagination" /><a href="" id="slide-left" /><a href="" id="slide-right" />');
