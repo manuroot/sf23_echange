@@ -25,46 +25,53 @@
      {# <link rel="stylesheet" href="{{ asset('theme1/css') }}" type="text/css" />#}
         <link rel="stylesheet" href="{{ asset('theme1/index.css') }}" type="text/css" media="screen">
         <link rel="stylesheet" href="{{ asset('theme1/animate.css') }}" type="text/css" media="screen, projection">  
-  <style type="text/css">
-        .color1 {
-    color: rgb(255, 98, 49);
-}
-     .colorw {
-    color: white;
-}
-   .color2 {
-    color: green;
-}
+        <style type="text/css">
+            .color1 {
+                color: rgb(255, 98, 49);
+            }
 
-  .color3 {
-    color: blue;
-}
- .color4 {
-    color: palevioletred;
-}
-.icon-10x {
-    font-size: 10em;
-}
-.services li {
-    list-style-type: none;
-    float: left;
-    background: none repeat scroll 0% 0% rgb(238, 238, 238);
-    padding: 20px;
-    margin-right: 1px;
-    text-align: center;
-    width: 150px;
-    height: 100px;
-    color: rgb(136, 136, 136);
-}
-.services li, .services li:hover li, .services li:hover {
-    transition: width 0.3s ease 0s;
-}
-/* Mise en place des diffÃ©rentes parties / slides */
-#Section-1{
+            .color2 {
+                color: green;
+            }
+
+            .color3 {
+                color: blue;
+            }
+            .color4 {
+                color: palevioletred;
+            }
+            .icon-10x {
+                font-size: 10em;
+            }
+            .services li {
+                list-style-type: none;
+                float: left;
+                background: none repeat scroll 0% 0% rgb(238, 238, 238);
+                padding: 20px;
+                margin-right: 1px;
+                text-align: center;
+                width: 150px;
+                height: 100px;
+                color: rgb(136, 136, 136);
+            }
+            .services li, .services li:hover li, .services li:hover {
+                transition: width 0.3s ease 0s;
+            }
+
+            section {
+                padding-top:50px;
+                padding-bottom:100px;
+                min-height:600px;
+                width:100%;
+                min-width:100%;
+                position:relative;
+                overflow:hidden;
+            }
+
+            #Section-1{
                 background:  url("/images/IMG_1676big.jpg") fixed no-repeat;
                   background-size:100% 100%;
                 min-height:350px;
-                margin-bottom:40px;
             }
 
             #Section-2{
@@ -81,7 +88,6 @@
 			background:   url("/images/IMG_1676big.jpg") 50% 0% fixed no-repeat;
                           
 			background-size:auto 100%;
-                         margin-bottom:20px;
 	  }
 	  
 	   #Section-2{
@@ -90,7 +96,7 @@
 	  } 
             }
 
-    </style>
+        </style>
   {% if map is defined %} 
             {{ google_map_css(map) }}
         {% endif %}
@@ -101,7 +107,7 @@
 {% endblock %}
     </head>
 
-    <body class="pull_top" style=""  id="myref">
+    <body class="pull_top" style="">
 
 
 {% block navbar %}
@@ -115,13 +121,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="#" class="navbar-brand"><span class="glyphicon glyphicon-home"></span>  VILLE DE PREFAILLES</a>
+                    <a href="http://cleancanvas.herokuapp.com/index.html" class="navbar-brand"><span class="glyphicon glyphicon-home"></span>  VILLE DE PREFAILLES</a>
                 </div>
 
                 <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#myref" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Ville <b class="caret"></b></a>
+                            <a href="http://cleancanvas.herokuapp.com/#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tree-conifer"></span> Coté Ville <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="http://cleancanvas.herokuapp.com/features.html">Features</a></li>
                                 <li><a href="http://cleancanvas.herokuapp.com/services.html">Services</a></li>
@@ -147,7 +153,6 @@
                        
 				<li><a href="#Section-1">Service</a> </li>
 				<li><a href="#Section-2">About us</a> </li>
-                                <li><a href="#Section-plan"><i class="fa fa-globe"></i></a> </li>
 				
 
 
@@ -404,7 +409,7 @@
     <!-- Example row of columns -->
     <div class="row">
 		<div class="page-header color-white col-xs-6 col-sm-6 col-md-6 col-lg-6">
-			<h2 class="paral">SECTION-1 HERE GOES TITLE</h2>
+			<h3 style="padding-top:50px;">SECTION-1 HERE GOES TITLE</h3>
 		</div> 
 	</div>
 	
@@ -436,7 +441,7 @@
 {% block main_part2 %}
 
 
-        <div class="container" id ="Section-plan">
+        <div class="container">
             <div class="section_header">
                 <h3>Plan de Préfailles (service googlemap) </h3>
             </div> 
@@ -641,10 +646,8 @@
 
    <div class="row">
 		<div class="page-header text-center color-white col-sm-12 col-lg-12" style="padding-top:30px;">
-			<h2 class="paral">SECTION-3 HOW MACH IS THE FISH</h2>
-                          <a href="#myref"><i class="fa fa-home fa-3x colorw"></i></a>
-                      
-                     
+			<h3>SECTION-3 HOW MACH IS THE FISH</h3>
+                          <a href="#Section-1">Service</a> 
 		</div> 
 	</div>	
 	{#
@@ -728,7 +731,7 @@
                        {# <div class="img client1"></div>#}
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 client">
-                        <i class="fa fa fa-cutlery icon-10x color2"></i>
+                        <i class="fa fa-truck icon-10x color2"></i>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 client">
                         <i class="fa fa-bar-chart-o icon-10x color3"></i>
@@ -916,7 +919,6 @@
         <script type="text/javascript">
             jQuery(document).ready(function() {
                 jQuery('#topnav').localScroll(3000);
-                 jQuery('#myref').localScroll(3000);
                 jQuery('#startbtn').localScroll(5000);
                 //.parallax(xPosition, speedFactor, outerHeight) options:
                 //xPosition - Horizontal position of the element

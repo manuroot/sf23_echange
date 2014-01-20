@@ -91,7 +91,7 @@
       position: relative;
       top: 102px;
       text-align: center; }
-      #feature_slider .slide#ideas .info h2 {
+      #feature_slider .slide#ideas .info h2,h2.paral  {
         color: #fff;
         font-weight: normal; }
     #feature_slider .slide#tour .info {
@@ -99,7 +99,7 @@
       top: 140px;
       right: 6%;
       width: 24%; }
-      #feature_slider .slide#tour .info h2 {
+      #feature_slider .slide#tour .info h2,h2.paral {
         color: #fff;
         font-size: 45px;
         font-weight: normal;
