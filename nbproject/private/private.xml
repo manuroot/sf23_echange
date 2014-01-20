@@ -5,18 +5,11 @@
         <group>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/web/theme1/css</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/web/theme1/animate.css</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_1.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/web/theme1/index.css</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/p_layout.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/prefailles/p_layout.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/basen.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/layout.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html_3.twig</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html.old.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/base.html.twig</file>
             <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/src/Application/EservicesBundle/Resources/views/Prefailles/index.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/web/theme1/bootstrap-overrides.css</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/prefailles_base.html.twig</file>
-            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/app/Resources/views/navbar.html.twig</file>
+            <file>file:/media/second/AA_ZEND_PROJ/Symfony_github/web/theme1/index-slider.js</file>
         </group>
     </open-files>
 </project-private>
