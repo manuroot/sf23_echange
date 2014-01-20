@@ -215,4 +215,23 @@ class PrefaillesController extends Controller {
 
     }
 
+
+    public function indexpage1Action() {
+   return $this->render('ApplicationEservicesBundle:Prefailles:index_page1.html.twig', array(
+      
+        ));
+    }
+    
+    
+    
+    public function indexpage2Action() {
+   return $this->render('ApplicationEservicesBundle:Prefailles:index_page2.html.twig', array(
+      
+        ));
+    }
+     public function indexpage3ction() {
+   return $this->render('ApplicationEservicesBundle:Prefailles:index_page3.html.twig', array(
+      
+        ));
+    }
 }

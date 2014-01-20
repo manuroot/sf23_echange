@@ -1,3 +1,11 @@
 prefailles_index:
     pattern:  /
     defaults: { _controller: "ApplicationEservicesBundle:Prefailles:index" }
+    
+prefailles_mer:
+    pattern:  /mer
+    defaults: { _controller: "ApplicationEservicesBundle:Prefailles:indexpage1" }
+        
+prefailles_ville:
+    pattern:  /mer
+    defaults: { _controller: "ApplicationEservicesBundle:Prefailles:indexpage2" }
