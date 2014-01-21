@@ -61,14 +61,14 @@
 }
 /* Mise en place des diffÃ©rentes parties / slides */
 #Section-1{
-                background:  url("/images/IMG_1676big.jpg") fixed no-repeat;
+                background:  url("{{ asset('images/IMG_1676big.jpg') }}") fixed no-repeat;
                   background-size:100% 100%;
                 min-height:350px;
                 margin-bottom:40px;
             }
 
             #Section-2{
-                background:  url("/images/IMG_1686big.jpg") fixed no-repeat;
+                background:   url("{{ asset('images/IMG_1686big.jpg') }}")  fixed no-repeat;
 
                 background-size:100% 100%;
                 min-height:350px;
@@ -78,14 +78,14 @@
 		
 	  
 	  #Section-1{
-			background:   url("/images/IMG_1676big.jpg") 50% 0% fixed no-repeat;
+			background:    url("{{ asset('images/IMG_1676big.jpg') }}") 50% 0% fixed no-repeat;
                           
 			background-size:auto 100%;
                          margin-bottom:20px;
 	  }
 	  
 	   #Section-2{
-		background: url("/images/IMG_1686big.jpg") 50% 0% fixed no-repeat;
+		background:url("{{ asset('images/IMG_1686big.jpg') }}") 50% 0% fixed no-repeat;
 		background-size:auto 100%;
 	  } 
             }
